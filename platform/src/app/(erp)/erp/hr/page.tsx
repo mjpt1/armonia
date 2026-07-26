@@ -59,6 +59,7 @@ export default function HrPage() {
       <ErpHeader title="منابع انسانی" meta={<>پرسنل، حضور، مرخصی، حقوق · {todayJalali()}</>} />
       <main className="page-enter space-y-8 px-5 pb-12 pt-8 sm:px-10">
         <CrudModule<Staff>
+          module="hr"
           title="پرسنل"
           endpoint="/api/hr"
           emptyForm={{ name: "", roleTitle: "", mobile: "" }}

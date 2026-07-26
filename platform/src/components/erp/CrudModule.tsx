@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
 import { Panel, PanelHead } from "@/components/ui/Panel";
+import { useScope } from "@/lib/mock/session";
+import type { ModuleKey } from "@/lib/types/rbac";
 import { cn } from "@/lib/utils/cn";
 
 export type FieldDef = {
@@ -24,6 +26,7 @@ type Props<T extends { id: string }> = {
   emptyForm?: Record<string, string>;
   transformBody?: (form: Record<string, string>) => Record<string, unknown>;
   canWrite?: boolean;
+  module?: ModuleKey;
   extraActions?: (row: T, reload: () => void) => ReactNode;
   query?: string;
   /** When true, PATCH/DELETE send id in body/query on collection URL (no /[id] routes) */
@@ -39,11 +42,15 @@ export function CrudModule<T extends { id: string }>({
   mapRowToForm,
   emptyForm,
   transformBody,
-  canWrite = true,
+  canWrite: canWriteProp = true,
+  module,
   extraActions,
   query = "",
   collectionMutations = true,
 }: Props<T>) {
+  const { canWriteModule, moduleAccess } = useScope();
+  const canWrite = module ? canWriteModule(module) : canWriteProp;
+  const accessLabel = module ? moduleAccess(module) : null;
   const [rows, setRows] = useState<T[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -149,7 +156,16 @@ export function CrudModule<T extends { id: string }>({
       <PanelHead
         titleId="crud-heading"
         title={title}
-        description={description}
+        description={
+          <>
+            {description}
+            {accessLabel && accessLabel !== "F" ? (
+              <span className="ms-2 rounded bg-stone-100 px-2 py-0.5 text-[0.68rem] text-ink-muted">
+                {accessLabel === "R" ? "فقط مشاهده" : accessLabel === "O" ? "محدود به شعبه" : "دادهٔ خود"}
+              </span>
+            ) : null}
+          </>
+        }
         actions={
           canWrite ? (
             <Button type="button" size="sm" onClick={openCreate}>

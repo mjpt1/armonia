@@ -39,6 +39,7 @@ export default function PatientsPage() {
       <ErpHeader title="بیماران" meta={<>پرونده و مدارک · {todayJalali()}</>} />
       <main className="page-enter space-y-8 px-5 pb-12 pt-8 sm:px-10">
         <CrudModule<Patient>
+          module="patients"
           title="فهرست بیماران"
           description="ایجاد پرونده و باز کردن جزئیات"
           endpoint="/api/patients"

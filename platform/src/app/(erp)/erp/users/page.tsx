@@ -45,6 +45,7 @@ export default function UsersPage() {
       <ErpHeader title="کاربران و RBAC" meta={<>نقش‌ها و لاگ فعالیت · {todayJalali()}</>} />
       <main className="page-enter space-y-8 px-5 pb-12 pt-8 sm:px-10">
         <CrudModule<User>
+          module="users"
           title="کاربران"
           endpoint="/api/users"
           emptyForm={{ name: "", email: "", role: "REC", initials: "" }}

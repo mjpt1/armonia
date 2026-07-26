@@ -58,6 +58,7 @@ export default function AppointmentsPage() {
       <ErpHeader title="نوبت‌دهی" meta={<>تقویم و لیست انتظار · {todayJalali()}</>} />
       <main className="page-enter space-y-8 px-5 pb-12 pt-8 sm:px-10">
         <CrudModule<Appt>
+          module="appointments"
           title="نوبت‌ها"
           description="رزرو، تأیید، لغو"
           endpoint="/api/appointments"
@@ -141,6 +142,7 @@ export default function AppointmentsPage() {
         />
 
         <CrudModule<Wait>
+          module="appointments"
           title="لیست انتظار"
           description="افزودن به صف انتظار"
           endpoint="/api/waitlist"

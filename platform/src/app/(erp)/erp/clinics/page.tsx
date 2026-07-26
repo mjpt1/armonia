@@ -4,7 +4,7 @@ import { ErpHeader } from "@/components/erp/ErpHeader";
 import { Button } from "@/components/ui/Button";
 import { DataTable, type Column } from "@/components/ui/DataTable";
 import { Panel, PanelHead } from "@/components/ui/Panel";
-import { useScope } from "@/lib/auth-session";
+import { useScope } from "@/lib/mock/session";
 import { apiFetch, useToast } from "@/lib/client-api";
 import { toFaDigits } from "@/lib/utils/digits";
 import { useEffect, useState } from "react";

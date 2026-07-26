@@ -5,6 +5,7 @@ import { ScopeProvider, useScope } from "@/lib/mock/session";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { canAccess } from "@/lib/rbac/matrix";
+import { defaultRouteForRole } from "@/lib/rbac/home";
 import { moduleFromPath } from "@/lib/nav";
 
 function Guard({ children }: { children: React.ReactNode }) {
@@ -17,7 +18,7 @@ function Guard({ children }: { children: React.ReactNode }) {
     if (loading || isLogin) return;
     const mod = moduleFromPath(pathname);
     if (mod && !canAccess(session.role, mod)) {
-      router.replace("/erp");
+      router.replace(defaultRouteForRole(session.role));
     }
   }, [session, loading, pathname, router, isLogin]);
 

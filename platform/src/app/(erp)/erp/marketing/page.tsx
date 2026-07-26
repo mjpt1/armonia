@@ -36,6 +36,7 @@ export default function MarketingPage() {
       <ErpHeader title="بازاریابی" meta={<>کمپین، بودجه، ROI · {todayJalali()}</>} />
       <main className="page-enter px-5 pb-12 pt-8 sm:px-10">
         <CrudModule<Campaign>
+          module="marketing"
           title="کمپین‌ها"
           endpoint="/api/marketing"
           emptyForm={{

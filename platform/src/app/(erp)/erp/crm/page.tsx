@@ -61,6 +61,7 @@ export default function CrmPage() {
         </Panel>
 
         <CrudModule<Lead>
+          module="crm"
           title="فهرست لیدها"
           description="ایجاد، تغییر مرحله قیف — داده در SQLite ذخیره می‌شود"
           endpoint="/api/leads"

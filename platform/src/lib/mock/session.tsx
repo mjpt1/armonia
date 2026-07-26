@@ -9,7 +9,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { canAccess } from "@/lib/rbac/matrix";
+import { canAccess, accessLevel, canWrite } from "@/lib/rbac/matrix";
+import { defaultRouteForRole } from "@/lib/rbac/home";
 import { ROLE_LABELS_FA, type ModuleKey, type RoleCode } from "@/lib/types/rbac";
 
 export type BranchOption = { id: string; name: string; city: string };
@@ -36,9 +37,11 @@ interface ScopeState {
   loading: boolean;
   setBranchId: (id: string | "all") => void;
   setClinicId: (id: string | "all") => void;
-  switchRole: (role: RoleCode, userId?: string) => Promise<void>;
+  switchRole: (role: RoleCode) => Promise<void>;
   refresh: () => Promise<void>;
   hasModule: (module: ModuleKey) => boolean;
+  moduleAccess: (module: ModuleKey) => ReturnType<typeof accessLevel>;
+  canWriteModule: (module: ModuleKey) => boolean;
 }
 
 const ScopeContext = createContext<ScopeState | null>(null);
@@ -113,13 +116,27 @@ export function ScopeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const switchRole = useCallback(
-    async (role: RoleCode, userId?: string) => {
-      await fetch("/api/auth/session", {
+    async (role: RoleCode) => {
+      const res = await fetch("/api/auth/session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role, userId }),
+        body: JSON.stringify({ role }),
       });
-      await refresh();
+      const json = await res.json();
+      if (json.data) {
+        setSession({
+          userId: json.data.userId,
+          name: json.data.name ?? "کاربر",
+          email: json.data.email ?? "",
+          initials: json.data.initials ?? "ک",
+          role: json.data.role as RoleCode,
+          branchId: json.data.branchId,
+        });
+        if (json.data.branchId) setBranchIdState(json.data.branchId);
+      } else {
+        await refresh();
+      }
+      window.location.href = defaultRouteForRole(role);
     },
     [refresh],
   );
@@ -147,6 +164,8 @@ export function ScopeProvider({ children }: { children: ReactNode }) {
       switchRole,
       refresh,
       hasModule: (module) => canAccess(session.role, module),
+      moduleAccess: (module) => accessLevel(session.role, module),
+      canWriteModule: (module) => canWrite(session.role, module),
     };
   }, [
     session,

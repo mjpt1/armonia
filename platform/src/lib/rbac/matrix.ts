@@ -7,7 +7,7 @@ export const RBAC_MATRIX: Record<ModuleKey, Partial<Record<RoleCode, AccessLevel
     CFO: "R", ACC: "R", HR: "R", BM: "O", CM: "O",
   },
   crm: {
-    CEO: "F", OPS: "F", SM: "F", SA: "F", MM: "R", ME: "R", SOC: "R",
+    CEO: "F", OPS: "F", SM: "F", SA: "F", MM: "R", ME: "R", SOC: "R", DES: "R", VID: "R",
     BM: "O", CM: "O", REC: "O",
   },
   patients: {
@@ -44,7 +44,7 @@ export const RBAC_MATRIX: Record<ModuleKey, Partial<Record<RoleCode, AccessLevel
     CFO: "F", ACC: "F", HR: "F", BM: "F", CM: "F", DOC: "F", AST: "F", REC: "F", PAT: "F",
   },
   notifications: {
-    CEO: "F", OPS: "F", SM: "O", SA: "O", MM: "O", ME: "O", SOC: "O",
+    CEO: "F", OPS: "F", SM: "O", SA: "O", MM: "O", ME: "O", SOC: "O", DES: "O", VID: "O",
     CFO: "O", ACC: "O", HR: "O", BM: "O", CM: "O", REC: "O",
   },
   users: {

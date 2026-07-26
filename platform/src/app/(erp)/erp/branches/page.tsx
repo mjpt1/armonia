@@ -22,6 +22,7 @@ export default function BranchesPage() {
       <ErpHeader title="شعب" meta={<>ایجاد شعبه و گزارش · {todayJalali()}</>} />
       <main className="page-enter px-5 pb-12 pt-8 sm:px-10">
         <CrudModule<Branch>
+          module="branches"
           title="فهرست شعب"
           endpoint="/api/branches"
           emptyForm={{ name: "", code: "", city: "", address: "", managerName: "" }}

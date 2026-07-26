@@ -47,6 +47,7 @@ export default function DoctorsPage() {
       <ErpHeader title="پزشکان" meta={<>پروفایل، برنامه، پورسانت · {todayJalali()}</>} />
       <main className="page-enter px-5 pb-12 pt-8 sm:px-10">
         <CrudModule<Doctor>
+          module="doctors"
           title="فهرست پزشکان"
           endpoint="/api/doctors"
           emptyForm={{

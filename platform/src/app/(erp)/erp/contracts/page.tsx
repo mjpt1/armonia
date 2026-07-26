@@ -23,6 +23,7 @@ export default function ContractsPage() {
       />
       <main className="page-enter px-5 pb-12 pt-8 sm:px-10">
         <CrudModule<Contract>
+          module="contracts"
           title="فهرست قراردادها"
           endpoint="/api/contracts"
           emptyForm={{

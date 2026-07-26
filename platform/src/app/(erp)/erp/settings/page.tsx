@@ -61,6 +61,7 @@ export default function SettingsPage() {
         )}
 
         <CrudModule<Service>
+          module="settings"
           title="خدمات"
           endpoint="/api/settings"
           query="?tab=services"
