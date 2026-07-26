@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Armonia mono">
+  <rect width="64" height="64" fill="#FFFFFF"/>
+  <path d="M32 8c-2.2 14-14 22-14 34a14 14 0 0 0 28 0c0-12-11.8-20-14-34z" fill="#1C1916"/>
+  <path d="M32 18c-1.2 8-8 12.5-8 20a8 8 0 0 0 16 0c0-7.5-6.8-12-8-20z" fill="#FFFFFF"/>
+  <path d="M22 46c3.2 3.5 6.8 5 10 5s6.8-1.5 10-5" fill="none" stroke="#1C1916" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

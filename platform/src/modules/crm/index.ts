@@ -1,0 +1,2 @@
+/** CRM module barrel */
+export {};

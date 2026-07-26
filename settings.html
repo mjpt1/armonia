@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تنظیمات | آرمونیا ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/estedad/wght.css" />
+  <link rel="stylesheet" href="assets/design-tokens.css" />
+  <link rel="stylesheet" href="assets/erp.css" />
+</head>
+<body data-page="settings">
+  <div class="app">
+    <aside class="sidebar" aria-label="ناوبری اصلی">
+      <a class="brand" href="dashboard.html">
+        <img src="assets/logo/armonia-mark.svg" alt="" width="40" height="40" />
+        <div>
+          <div class="brand-text">آرمونیا</div>
+          <div class="brand-sub">پنل مدیریت</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <div class="nav-group">
+          <div class="nav-label">اجرایی</div>
+          <a data-nav="dashboard" href="dashboard.html"><span class="dot" aria-hidden="true"></span> داشبورد</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">فروش و CRM</div>
+          <a data-nav="crm" href="crm.html"><span class="dot" aria-hidden="true"></span> لیدها</a>
+          <a data-nav="crm" href="crm.html#funnel"><span class="dot" aria-hidden="true"></span> قیف فروش</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> قراردادها</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">عملیات کلینیک</div>
+          <a data-nav="appointments" href="appointments.html"><span class="dot" aria-hidden="true"></span> نوبت‌دهی</a>
+          <a data-nav="patients" href="patients.html"><span class="dot" aria-hidden="true"></span> بیماران</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> پزشکان</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">مالی و سیستم</div>
+          <a href="#"><span class="dot" aria-hidden="true"></span> مالی</a>
+          <a data-nav="settings" href="settings.html"><span class="dot" aria-hidden="true"></span> تنظیمات</a>
+        </div>
+      </nav>
+
+      <div class="sidebar-foot">
+        شعبه فعال: <span data-branch-label>تهران — ونک</span><br />
+        همگام‌سازی: چند لحظه پیش
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="header">
+        <div>
+          <h1>تنظیمات سیستم</h1>
+          <div class="header-meta">
+            شعب، کلینیک‌ها و پیکربندی · اسکلت اولیه
+            · نقش: مدیر سیستم
+          </div>
+        </div>
+        <div class="switchers">
+          <label class="switch">
+            <span>شعبه</span>
+            <select id="branch-switch" aria-label="انتخاب شعبه">
+              <option>تهران — ونک</option>
+              <option>تهران — سعادت‌آباد</option>
+              <option>اصفهان — مرکزی</option>
+            </select>
+          </label>
+          <label class="switch">
+            <span>کلینیک</span>
+            <select aria-label="انتخاب کلینیک">
+              <option>همهٔ کلینیک‌ها</option>
+              <option>کلینیک پوست</option>
+              <option>کلینیک لیزر</option>
+            </select>
+          </label>
+          <div class="user-chip">
+            <div class="avatar" aria-hidden="true">س‌م</div>
+            سارا محمدی
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="main">
+        <div class="stack">
+          <section class="panel" aria-labelledby="branches-settings">
+            <div class="panel-head">
+              <div>
+                <h2 id="branches-settings">شعب</h2>
+                <p>تعریف شعبه، آدرس و وضعیت فعال‌سازی</p>
+              </div>
+              <button type="button" class="btn btn-primary">شعبهٔ جدید</button>
+            </div>
+            <div class="settings-grid">
+              <article class="setting-block">
+                <h3>تهران — ونک</h3>
+                <p>خیابان ولیعصر، بالاتر از ونک · کد: THR-VAN</p>
+                <p class="setting-meta">وضعیت: فعال · ۳ کلینیک · ۱۲ کاربر</p>
+                <button type="button" class="btn btn-ghost">ویرایش</button>
+              </article>
+              <article class="setting-block">
+                <h3>تهران — سعادت‌آباد</h3>
+                <p>بلوار دریا، پلاک ۲۸ · کد: THR-SAA</p>
+                <p class="setting-meta">وضعیت: فعال · ۲ کلینیک · ۸ کاربر</p>
+                <button type="button" class="btn btn-ghost">ویرایش</button>
+              </article>
+              <article class="setting-block">
+                <h3>اصفهان — مرکزی</h3>
+                <p>چهارباغ عباسی · کد: ISF-CTR</p>
+                <p class="setting-meta">وضعیت: فعال · ۲ کلینیک · ۶ کاربر</p>
+                <button type="button" class="btn btn-ghost">ویرایش</button>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="clinics-settings">
+            <div class="panel-head">
+              <div>
+                <h2 id="clinics-settings">کلینیک‌ها</h2>
+                <p>اتصال کلینیک به شعبه و نوع خدمت</p>
+              </div>
+              <button type="button" class="btn btn-primary">کلینیک جدید</button>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>نام</th>
+                  <th>شعبه</th>
+                  <th>نوع</th>
+                  <th>پزشکان</th>
+                  <th>وضعیت</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>کلینیک پوست ونک</td>
+                  <td>تهران — ونک</td>
+                  <td>پوست و زیبایی</td>
+                  <td class="num">۴</td>
+                  <td><span class="badge badge-win">فعال</span></td>
+                  <td><button type="button" class="btn btn-ghost">تنظیم</button></td>
+                </tr>
+                <tr>
+                  <td>کلینیک لیزر ونک</td>
+                  <td>تهران — ونک</td>
+                  <td>لیزر</td>
+                  <td class="num">۳</td>
+                  <td><span class="badge badge-win">فعال</span></td>
+                  <td><button type="button" class="btn btn-ghost">تنظیم</button></td>
+                </tr>
+                <tr>
+                  <td>کلینیک پوست سعادت‌آباد</td>
+                  <td>تهران — سعادت‌آباد</td>
+                  <td>پوست و زیبایی</td>
+                  <td class="num">۳</td>
+                  <td><span class="badge badge-win">فعال</span></td>
+                  <td><button type="button" class="btn btn-ghost">تنظیم</button></td>
+                </tr>
+                <tr>
+                  <td>کلینیک تزریق اصفهان</td>
+                  <td>اصفهان — مرکزی</td>
+                  <td>تزریق</td>
+                  <td class="num">۲</td>
+                  <td><span class="badge badge-wait">آزمایشی</span></td>
+                  <td><button type="button" class="btn btn-ghost">تنظیم</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="panel" aria-labelledby="system-settings">
+            <div class="panel-head">
+              <div>
+                <h2 id="system-settings">سایر تنظیمات</h2>
+                <p>اسکلت ماژول‌های بعدی — هنوز فرم کامل متصل نشده</p>
+              </div>
+            </div>
+            <div class="settings-grid">
+              <article class="setting-block">
+                <h3>نقش‌ها و دسترسی</h3>
+                <p>ماتریس RBAC برای مدیر، پذیرش، مشاور، پزشک و مالی.</p>
+                <p class="setting-meta">مرجع: docs/rbac-matrix.md</p>
+              </article>
+              <article class="setting-block">
+                <h3>اعلان‌ها و پیامک</h3>
+                <p>قالب یادآوری نوبت، پیگیری CRM و تأیید قرارداد.</p>
+                <p class="setting-meta">وضعیت: اسکلت</p>
+              </article>
+              <article class="setting-block">
+                <h3>هویت بصری پنل</h3>
+                <p>Concept A تأیید شد · توکن‌ها از assets/design-tokens.css</p>
+                <p class="setting-meta">نسخهٔ برند ۱٫۰</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="assets/erp.js"></script>
+</body>
+</html>

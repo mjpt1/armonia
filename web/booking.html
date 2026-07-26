@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>رزرو نوبت | آرمونیا</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>
+    .page { padding: 3rem 0 4rem; max-width: 640px; }
+    h1 { font-size: clamp(1.8rem, 3vw, 2.2rem); color: var(--primary); margin-bottom: 0.5rem; }
+    .lead { color: var(--text-muted); margin-bottom: 2rem; }
+    form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      display: grid;
+      gap: 1.1rem;
+    }
+    label { display: grid; gap: 0.35rem; font-size: 0.9rem; font-weight: 600; color: var(--color-ink-700); }
+    input, select, textarea {
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 400;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      background: var(--bg);
+      color: var(--text);
+    }
+    input[dir="ltr"] { text-align: start; }
+    .hint { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+    .slots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    @media (max-width: 500px) { .slots { grid-template-columns: repeat(2, 1fr); } }
+    .slot {
+      border: 1px solid var(--border-strong);
+      background: var(--bg);
+      padding: 0.55rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .slot[aria-pressed="true"] {
+      background: var(--primary);
+      color: var(--color-porcelain);
+      border-color: var(--primary);
+    }
+    .note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 0.85rem;
+      background: var(--color-champagne-100);
+      border-inline-start: 3px solid var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="logo" href="index.html"><img src="../assets/logo/armonia-mark.svg" alt="" /> آرمونیا</a>
+      <ul class="nav-links">
+        <li><a href="index.html">خانه</a></li>
+        <li><a href="services.html">خدمات</a></li>
+        <li><a href="doctors.html">پزشکان</a></li>
+        <li><a href="booking.html" aria-current="page">رزرو نوبت</a></li>
+        <li><a href="patient.html">پنل بیمار</a></li>
+        <li><a class="nav-cta" href="booking.html">مشاوره رایگان</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container page">
+    <h1>رزرو آنلاین</h1>
+    <p class="lead">شعبه، خدمت و زمان را انتخاب کنید. تأیید نوبت از طریق پیامک ارسال می‌شود.</p>
+
+    <form action="#" method="get" onsubmit="event.preventDefault(); alert('این یک پروتوتایپ است؛ نوبت ثبت واقعی ندارد.');">
+      <label>
+        نام و نام خانوادگی
+        <input type="text" name="name" required placeholder="مثال: مینا رضایی" autocomplete="name" />
+      </label>
+      <label>
+        موبایل
+        <input type="tel" name="mobile" dir="ltr" required placeholder="0912xxxxxxx" autocomplete="tel" />
+        <span class="hint">برای ارسال تأیید پیامکی</span>
+      </label>
+      <label>
+        شعبه
+        <select name="branch" required>
+          <option value="">انتخاب کنید</option>
+          <option>تهران — ونک</option>
+          <option>تهران — سعادت‌آباد</option>
+          <option>اصفهان — مرکزی</option>
+        </select>
+      </label>
+      <label>
+        خدمت
+        <select name="service" required>
+          <option value="">انتخاب کنید</option>
+          <option>مشاوره زیبایی</option>
+          <option>بوتاکس</option>
+          <option>فیلر</option>
+          <option>لیزر</option>
+          <option>مزوتراپی</option>
+        </select>
+      </label>
+      <label>
+        پزشک (اختیاری)
+        <select name="doctor">
+          <option>اولین زمان آزاد</option>
+          <option>دکتر سارا نوری</option>
+          <option>دکتر امیر کاظمی</option>
+          <option>دکتر مریم امینی</option>
+        </select>
+      </label>
+      <label>
+        تاریخ ترجیحی
+        <input type="text" name="date" placeholder="مثال: ۲۰ مرداد ۱۴۰۵" />
+        <span class="hint">تاریخ جلالی</span>
+      </label>
+      <div>
+        <div style="font-size:0.9rem;font-weight:600;margin-bottom:0.5rem;color:var(--color-ink-700)">ساعت پیشنهادی</div>
+        <div class="slots" id="slots">
+          <button type="button" class="slot" aria-pressed="false">۱۰:۰۰</button>
+          <button type="button" class="slot" aria-pressed="true">۱۰:۳۰</button>
+          <button type="button" class="slot" aria-pressed="false">۱۱:۰۰</button>
+          <button type="button" class="slot" aria-pressed="false">۱۲:۰۰</button>
+          <button type="button" class="slot" aria-pressed="false">۱۴:۰۰</button>
+          <button type="button" class="slot" aria-pressed="false">۱۵:۳۰</button>
+          <button type="button" class="slot" aria-pressed="false">۱۷:۰۰</button>
+          <button type="button" class="slot" aria-pressed="false">۱۸:۳۰</button>
+        </div>
+      </div>
+      <label>
+        توضیح کوتاه (اختیاری)
+        <textarea name="note" rows="3" placeholder="هدف درمان یا سابقهٔ مرتبط…"></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">ثبت درخواست نوبت</button>
+    </form>
+    <p class="note">این صفحه پروتوتایپ طراحی است. اتصال به تقویم پزشکان و پیامک پس از فاز توسعه فعال می‌شود.</p>
+  </main>
+
+  <script>
+    document.getElementById('slots').addEventListener('click', (e) => {
+      const btn = e.target.closest('.slot');
+      if (!btn) return;
+      document.querySelectorAll('.slot').forEach(s => s.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+    });
+  </script>
+
+  <footer class="site-footer">
+    <div class="container copyright">© ۱۴۰۵ آرمونیا</div>
+  </footer>
+</body>
+</html>

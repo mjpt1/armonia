@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پزشکان | آرمونیا</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>
+    .page-hero { padding: 3rem 0 1.5rem; }
+    .page-hero h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--primary); margin-bottom: 0.5rem; }
+    .page-hero p { color: var(--text-muted); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      padding-bottom: 4rem;
+    }
+    @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      align-items: center;
+    }
+    @media (max-width: 500px) { .card { grid-template-columns: 1fr; } }
+    .photo {
+      aspect-ratio: 1;
+      background: var(--color-olive-100) center/cover;
+      border-radius: var(--radius-md);
+    }
+    h2 { font-size: 1.1rem; color: var(--primary); }
+    .role { color: var(--accent); font-weight: 600; font-size: 0.85rem; margin: 0.2rem 0 0.5rem; }
+    .meta { font-size: 0.88rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="logo" href="index.html"><img src="../assets/logo/armonia-mark.svg" alt="" /> آرمونیا</a>
+      <ul class="nav-links">
+        <li><a href="index.html">خانه</a></li>
+        <li><a href="services.html">خدمات</a></li>
+        <li><a href="doctors.html" aria-current="page">پزشکان</a></li>
+        <li><a href="booking.html">رزرو نوبت</a></li>
+        <li><a href="patient.html">پنل بیمار</a></li>
+        <li><a class="nav-cta" href="booking.html">مشاوره رایگان</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-hero">
+      <h1>پزشکان</h1>
+      <p>متخصصان طرف‌قرارداد شبکهٔ آرمونیا در شعب مختلف.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80')"></div>
+        <div>
+          <h2>دکتر سارا نوری</h2>
+          <div class="role">پوست و مو</div>
+          <p class="meta">شعبه ونک · شنبه‌ها و دوشنبه‌ها · ۱۵ سال تجربه</p>
+          <a class="btn btn-ghost" style="margin-top:0.75rem;padding:0.45rem 0.9rem;font-size:0.85rem" href="booking.html">رزرو با این پزشک</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80')"></div>
+        <div>
+          <h2>دکتر امیر کاظمی</h2>
+          <div class="role">زیبایی و لیزر</div>
+          <p class="meta">سعادت‌آباد · یکشنبه تا چهارشنبه · ۱۲ سال تجربه</p>
+          <a class="btn btn-ghost" style="margin-top:0.75rem;padding:0.45rem 0.9rem;font-size:0.85rem" href="booking.html">رزرو با این پزشک</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80')"></div>
+        <div>
+          <h2>دکتر مریم امینی</h2>
+          <div class="role">جوان‌سازی صورت</div>
+          <p class="meta">اصفهان · سه‌شنبه و پنج‌شنبه · ۱۰ سال تجربه</p>
+          <a class="btn btn-ghost" style="margin-top:0.75rem;padding:0.45rem 0.9rem;font-size:0.85rem" href="booking.html">رزرو با این پزشک</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80')"></div>
+        <div>
+          <h2>دکتر رضا امینی</h2>
+          <div class="role">لیزر و پوست</div>
+          <p class="meta">ونک · صبح‌ها · ۸ سال تجربه</p>
+          <a class="btn btn-ghost" style="margin-top:0.75rem;padding:0.45rem 0.9rem;font-size:0.85rem" href="booking.html">رزرو با این پزشک</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container copyright">© ۱۴۰۵ آرمونیا</div>
+  </footer>
+</body>
+</html>

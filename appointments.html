@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>نوبت‌دهی | آرمونیا ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/estedad/wght.css" />
+  <link rel="stylesheet" href="assets/design-tokens.css" />
+  <link rel="stylesheet" href="assets/erp.css" />
+</head>
+<body data-page="appointments">
+  <div class="app">
+    <aside class="sidebar" aria-label="ناوبری اصلی">
+      <a class="brand" href="dashboard.html">
+        <img src="assets/logo/armonia-mark.svg" alt="" width="40" height="40" />
+        <div>
+          <div class="brand-text">آرمونیا</div>
+          <div class="brand-sub">پنل مدیریت</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <div class="nav-group">
+          <div class="nav-label">اجرایی</div>
+          <a data-nav="dashboard" href="dashboard.html"><span class="dot" aria-hidden="true"></span> داشبورد</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">فروش و CRM</div>
+          <a data-nav="crm" href="crm.html"><span class="dot" aria-hidden="true"></span> لیدها</a>
+          <a data-nav="crm" href="crm.html#funnel"><span class="dot" aria-hidden="true"></span> قیف فروش</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> قراردادها</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">عملیات کلینیک</div>
+          <a data-nav="appointments" href="appointments.html"><span class="dot" aria-hidden="true"></span> نوبت‌دهی</a>
+          <a data-nav="patients" href="patients.html"><span class="dot" aria-hidden="true"></span> بیماران</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> پزشکان</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">مالی و سیستم</div>
+          <a href="#"><span class="dot" aria-hidden="true"></span> مالی</a>
+          <a data-nav="settings" href="settings.html"><span class="dot" aria-hidden="true"></span> تنظیمات</a>
+        </div>
+      </nav>
+
+      <div class="sidebar-foot">
+        شعبه فعال: <span data-branch-label>تهران — ونک</span><br />
+        همگام‌سازی: چند لحظه پیش
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="header">
+        <div>
+          <h1>نوبت‌دهی و تقویم پزشکان</h1>
+          <div class="header-meta">
+            مدیریت رزرو · <time datetime="2026-08-06">۱۵ مرداد ۱۴۰۵</time>
+            · نقش: پذیرش
+          </div>
+        </div>
+        <div class="switchers">
+          <label class="switch">
+            <span>شعبه</span>
+            <select id="branch-switch" aria-label="انتخاب شعبه">
+              <option>تهران — ونک</option>
+              <option>تهران — سعادت‌آباد</option>
+              <option>اصفهان — مرکزی</option>
+            </select>
+          </label>
+          <label class="switch">
+            <span>کلینیک</span>
+            <select aria-label="انتخاب کلینیک">
+              <option>کلینیک پوست</option>
+              <option>کلینیک لیزر</option>
+              <option>همهٔ کلینیک‌ها</option>
+            </select>
+          </label>
+          <div class="user-chip">
+            <div class="avatar" aria-hidden="true">س‌م</div>
+            سارا محمدی
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="main">
+        <section class="kpi-band" aria-label="خلاصهٔ نوبت‌ها">
+          <div class="kpi">
+            <div class="kpi-label">نوبت‌های امروز</div>
+            <div class="kpi-value">۴۲</div>
+            <div class="kpi-delta neutral">۸ باقی‌مانده</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">تأیید‌شده</div>
+            <div class="kpi-value">۳۵</div>
+            <div class="kpi-delta up">۸۳٪ حضور پیش‌بینی</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">کنسلی</div>
+            <div class="kpi-value">۳</div>
+            <div class="kpi-delta down">۲ جابه‌جایی</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">اسلات خالی</div>
+            <div class="kpi-value">۱۱</div>
+            <div class="kpi-delta neutral">تا ساعت ۲۰</div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="cal-heading">
+          <div class="cal-toolbar">
+            <div>
+              <h2 id="cal-heading" class="cal-day-label">شنبه ۱۵ مرداد ۱۴۰۵</h2>
+              <p style="margin-top:0.25rem;font-size:0.75rem;color:var(--text-muted)">نمای روزانه · ستون‌ها بر اساس پزشک</p>
+            </div>
+            <div class="filters">
+              <div class="cal-nav">
+                <button type="button" class="btn btn-ghost" aria-label="روز قبل">قبلی</button>
+                <button type="button" class="btn btn-ghost">امروز</button>
+                <button type="button" class="btn btn-ghost" aria-label="روز بعد">بعدی</button>
+              </div>
+              <button type="button" class="btn btn-primary">نوبت جدید</button>
+            </div>
+          </div>
+
+          <div class="cal-grid" role="grid" aria-label="تقویم نوبت پزشکان">
+            <div class="cal-col-head"></div>
+            <div class="cal-col-head">دکـتر احمدی<br /><span style="font-weight:500;color:var(--text-muted);font-size:0.7rem">پوست</span></div>
+            <div class="cal-col-head">دکـتر کریمی<br /><span style="font-weight:500;color:var(--text-muted);font-size:0.7rem">لیزر</span></div>
+            <div class="cal-col-head">دکـتر موسوی<br /><span style="font-weight:500;color:var(--text-muted);font-size:0.7rem">تزریق</span></div>
+            <div class="cal-col-head">دکـتر نوری<br /><span style="font-weight:500;color:var(--text-muted);font-size:0.7rem">مشاوره</span></div>
+
+            <div class="cal-time">۰۹:۰۰</div>
+            <div class="cal-slot">
+              <div class="appt"><strong>مینا رضایی</strong>بوتاکس · ۳۰ دقیقه</div>
+            </div>
+            <div class="cal-slot">
+              <div class="appt laser"><strong>علی کریمی</strong>لیزر فول‌بادی</div>
+            </div>
+            <div class="cal-slot"></div>
+            <div class="cal-slot">
+              <div class="appt consult"><strong>سحر مرادی</strong>مشاوره پوست</div>
+            </div>
+
+            <div class="cal-time">۱۰:۰۰</div>
+            <div class="cal-slot">
+              <div class="appt"><strong>زهرا حسینی</strong>فیلر لب</div>
+            </div>
+            <div class="cal-slot"></div>
+            <div class="cal-slot">
+              <div class="appt"><strong>الهام نادری</strong>مزوتراپی</div>
+            </div>
+            <div class="cal-slot"></div>
+
+            <div class="cal-time">۱۱:۰۰</div>
+            <div class="cal-slot"></div>
+            <div class="cal-slot">
+              <div class="appt laser"><strong>نیما جعفری</strong>لیزر صورت</div>
+            </div>
+            <div class="cal-slot">
+              <div class="appt"><strong>نگار صالحی</strong>بوتاکس چشم</div>
+            </div>
+            <div class="cal-slot">
+              <div class="appt consult"><strong>رضا کاظمی</strong>پیگیری درمان</div>
+            </div>
+
+            <div class="cal-time">۱۲:۰۰</div>
+            <div class="cal-slot">
+              <div class="appt"><strong>پگاه امینی</strong>پاکسازی پوست</div>
+            </div>
+            <div class="cal-slot"></div>
+            <div class="cal-slot"></div>
+            <div class="cal-slot"></div>
+
+            <div class="cal-time">۱۴:۰۰</div>
+            <div class="cal-slot">
+              <div class="appt"><strong>سمیرا توکلی</strong>هایفو</div>
+            </div>
+            <div class="cal-slot">
+              <div class="appt laser"><strong>مریم اکبری</strong>لیزر زیر بغل</div>
+            </div>
+            <div class="cal-slot"></div>
+            <div class="cal-slot">
+              <div class="appt consult"><strong>حسین باقری</strong>مشاوره اولیه</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:var(--space-6)" aria-labelledby="list-heading">
+          <div class="panel-head">
+            <div>
+              <h2 id="list-heading">فهرست نوبت‌های امروز</h2>
+              <p>وضعیت تأیید، حضور و کنسلی</p>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ساعت</th>
+                <th>بیمار</th>
+                <th>پزشک</th>
+                <th>خدمت</th>
+                <th>وضعیت</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="num">۰۹:۰۰</td>
+                <td><a href="patients.html">مینا رضایی</a></td>
+                <td>دکـتر احمدی</td>
+                <td>بوتاکس پیشانی</td>
+                <td><span class="badge badge-done">تأیید‌شده</span></td>
+              </tr>
+              <tr>
+                <td class="num">۰۹:۰۰</td>
+                <td><a href="patients.html">علی کریمی</a></td>
+                <td>دکـتر کریمی</td>
+                <td>لیزر فول‌بادی</td>
+                <td><span class="badge badge-follow">حاضر</span></td>
+              </tr>
+              <tr>
+                <td class="num">۱۰:۰۰</td>
+                <td><a href="patients.html">زهرا حسینی</a></td>
+                <td>دکـتر احمدی</td>
+                <td>فیلر لب</td>
+                <td><span class="badge badge-wait">در انتظار</span></td>
+              </tr>
+              <tr>
+                <td class="num">۱۱:۳۰</td>
+                <td>نگار صالحی</td>
+                <td>دکـتر موسوی</td>
+                <td>بوتاکس چشم</td>
+                <td><span class="badge badge-cancel">کنسل</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="assets/erp.js"></script>
+</body>
+</html>

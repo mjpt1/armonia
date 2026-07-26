@@ -1,0 +1,45 @@
+/* Armonia design tokens — mapped for app use */
+:root {
+  --color-olive-900: #1e3028;
+  --color-olive-800: #2f4a3c;
+  --color-olive-700: #3d5c4a;
+  --color-olive-100: #e8efea;
+  --color-olive-50: #f2f7f4;
+  --color-champagne-700: #a6854f;
+  --color-champagne-500: #c4a574;
+  --color-champagne-100: #f3ebdd;
+  --color-ivory: #f7f4ef;
+  --color-porcelain: #fffcf8;
+  --color-stone-100: #ede8e1;
+  --color-stone-300: #c9c0b4;
+  --color-ink-muted: #7a7268;
+  --color-ink-700: #3a3530;
+  --color-ink-900: #1c1916;
+  --color-white: #ffffff;
+  --color-success: #2f7d5b;
+  --color-warning: #c4892a;
+  --color-error: #b4453a;
+  --color-info: #3d6b7a;
+
+  --bg: var(--color-ivory);
+  --surface: var(--color-porcelain);
+  --primary: var(--color-olive-800);
+  --primary-hover: var(--color-olive-700);
+  --accent: var(--color-champagne-500);
+  --text: var(--color-ink-900);
+  --text-muted: var(--color-ink-muted);
+  --border: var(--color-stone-100);
+  --border-strong: var(--color-stone-300);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --sidebar-width: 248px;
+  --shadow-soft: 0 1px 2px rgb(28 25 22 / 0.04), 0 8px 24px rgb(28 25 22 / 0.04);
+  --duration: 280ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --hairline: rgb(201 192 180 / 0.55);
+  --mesh-a: rgb(47 74 60 / 0.07);
+  --mesh-b: rgb(196 165 116 / 0.12);
+  --mesh-c: rgb(232 239 234 / 0.9);
+}

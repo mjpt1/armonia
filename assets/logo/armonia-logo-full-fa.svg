@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" role="img" aria-label=""1EHFÌ'">
+  <rect width="280" height="64" fill="#FFFFFF"/>
+  <g transform="translate(4,0)">
+    <path d="M32 8c-2.2 14-14 22-14 34a14 14 0 0 0 28 0c0-12-11.8-20-14-34z" fill="#2F4A3C"/>
+    <path d="M32 18c-1.2 8-8 12.5-8 20a8 8 0 0 0 16 0c0-7.5-6.8-12-8-20z" fill="#C4A574"/>
+    <path d="M22 46c3.2 3.5 6.8 5 10 5s6.8-1.5 10-5" fill="none" stroke="#2F4A3C" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+  <text x="78" y="42" font-family="Tahoma, Arial, sans-serif" font-size="28" font-weight="700" fill="#2F4A3C">"1EHFÌ'</text>
+  <text x="200" y="40" font-family="Georgia, serif" font-size="14" fill="#C4A574" letter-spacing="1.5">ARMONIA</text>
+</svg>

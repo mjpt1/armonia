@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Concept A — آرامِ ارتقایافته | آرمونیا ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/estedad/wght.css" />
+  <link rel="stylesheet" href="../assets/design-tokens.css" />
+  <style>
+    /* ── Elevated Concept A — Atelier calm ── */
+    :root {
+      --font-display: "Estedad Variable", "Vazirmatn", Tahoma, sans-serif;
+      --mesh-a: rgb(47 74 60 / 0.07);
+      --mesh-b: rgb(196 165 116 / 0.12);
+      --mesh-c: rgb(232 239 234 / 0.9);
+      --rail: var(--color-champagne-500);
+      --hairline: rgb(201 192 180 / 0.55);
+      --depth: 0 1px 1px rgb(28 25 22 / 0.03), 0 12px 40px rgb(47 74 60 / 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    body {
+      font-family: var(--font-fa);
+      color: var(--text);
+      min-height: 100vh;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 90% 60% at 100% 0%, var(--mesh-b), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 0% 100%, var(--mesh-a), transparent 50%),
+        radial-gradient(ellipse 50% 40% at 70% 80%, var(--mesh-c), transparent 60%),
+        linear-gradient(165deg, #F9F6F1 0%, var(--color-ivory) 45%, #F3F0EA 100%);
+      background-attachment: fixed;
+    }
+
+    /* Soft paper grain — atmosphere without flat fill */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+    }
+
+    .banner,
+    .app {
+      position: relative;
+      z-index: 1;
+    }
+
+    .banner {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: 0.6rem var(--space-6);
+      font-size: 0.82rem;
+      color: var(--color-ink-700);
+      background: rgb(255 252 248 / 0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .banner strong {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .banner .rec {
+      display: inline-block;
+      margin-inline-start: 0.35rem;
+      padding: 0.12rem 0.45rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--color-champagne-700);
+      background: var(--color-champagne-100);
+      border-radius: var(--radius-sm);
+      vertical-align: middle;
+    }
+    .banner a {
+      flex-shrink: 0;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease);
+    }
+    .banner a:hover {
+      background: var(--color-olive-50);
+      border-color: var(--color-olive-700);
+    }
+    .banner a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 248px 1fr;
+      min-height: calc(100vh - 44px);
+    }
+    @media (max-width: 960px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+      padding: var(--space-8) var(--space-4) var(--space-6);
+      background: rgb(255 252 248 / 0.72);
+      backdrop-filter: blur(16px);
+      border-inline-end: 1px solid var(--hairline);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding-inline: var(--space-3);
+    }
+    .brand img {
+      width: 40px;
+      height: 40px;
+    }
+    .brand-text {
+      font-family: var(--font-display);
+      font-weight: 650;
+      font-size: 1.2rem;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .brand-sub {
+      margin-top: 3px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav-group + .nav-group {
+      margin-top: var(--space-6);
+    }
+    .nav-label {
+      padding: 0 var(--space-3) var(--space-2);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .nav a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: 0.62rem var(--space-3);
+      margin-block: 1px;
+      border-radius: var(--radius-md);
+      color: var(--color-ink-700);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color var(--duration) var(--ease), background var(--duration) var(--ease);
+    }
+    .nav a:hover {
+      color: var(--primary);
+      background: rgb(242 247 244 / 0.7);
+    }
+    .nav a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+    .nav a.active {
+      color: var(--primary);
+      font-weight: 600;
+      background: var(--color-olive-50);
+    }
+    /* Signature: sliding champagne rail */
+    .nav a.active::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      top: 18%;
+      bottom: 18%;
+      width: 3px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--color-champagne-500), var(--color-champagne-700));
+      box-shadow: 0 0 12px rgb(196 165 116 / 0.45);
+      animation: railIn 420ms var(--ease) both;
+    }
+    @keyframes railIn {
+      from { transform: scaleY(0.35); opacity: 0; }
+      to { transform: scaleY(1); opacity: 1; }
+    }
+    .nav .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-stone-300);
+      flex-shrink: 0;
+      transition: background var(--duration) var(--ease), transform var(--duration) var(--ease);
+    }
+    .nav a.active .dot {
+      background: var(--accent);
+      transform: scale(1.15);
+    }
+
+    .sidebar-foot {
+      margin-top: auto;
+      padding: var(--space-4) var(--space-3);
+      border-top: 1px solid var(--hairline);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .sidebar-foot span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* ── Main ── */
+    .main {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-5);
+      flex-wrap: wrap;
+      padding: var(--space-6) var(--space-10) var(--space-5);
+      border-bottom: 1px solid transparent;
+      background: linear-gradient(180deg, rgb(255 252 248 / 0.55), transparent);
+    }
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 650;
+      color: var(--color-ink-900);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    .header-meta {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 450;
+    }
+    .header-meta time {
+      color: var(--color-ink-700);
+      font-weight: 500;
+    }
+
+    .switchers {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .switch {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .switch span {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .switch select {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      min-width: 148px;
+      padding: 0.5rem 0.75rem;
+      color: var(--text);
+      background: rgb(255 252 248 / 0.9);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+    }
+    .switch select:hover {
+      border-color: var(--color-olive-700);
+    }
+    .switch select:focus-visible {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgb(196 165 116 / 0.25);
+    }
+
+    .user-chip {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: 0.35rem 0.85rem 0.35rem 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-ink-700);
+      background: rgb(255 252 248 / 0.9);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+    }
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 650;
+      font-size: 0.72rem;
+      color: var(--color-porcelain);
+      background: linear-gradient(145deg, var(--color-olive-700), var(--color-olive-800));
+    }
+
+    .content {
+      padding: var(--space-8) var(--space-10) var(--space-12);
+      animation: pageEnter 480ms var(--ease) both;
+    }
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ── KPI: open metrics band (not SaaS card grid) ── */
+    .kpi-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-bottom: var(--space-10);
+      padding: var(--space-6) 0;
+      border-block: 1px solid var(--hairline);
+      background:
+        linear-gradient(90deg, transparent, rgb(196 165 116 / 0.08), transparent);
+    }
+    @media (max-width: 1100px) {
+      .kpi-band {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6) 0;
+      }
+      .kpi:nth-child(odd) {
+        border-inline-end: 1px solid var(--hairline);
+      }
+      .kpi:nth-child(n + 3) {
+        border-block-start: 1px solid var(--hairline);
+        padding-top: var(--space-5);
+      }
+    }
+    @media (max-width: 560px) {
+      .kpi-band { grid-template-columns: 1fr; }
+      .kpi,
+      .kpi:nth-child(odd) {
+        border-inline-end: 0;
+        border-block-start: 1px solid var(--hairline);
+        padding: var(--space-4) 0;
+      }
+      .kpi:first-child { border-block-start: 0; padding-top: 0; }
+    }
+
+    .kpi {
+      padding: 0 var(--space-6);
+      border-inline-end: 1px solid var(--hairline);
+    }
+    .kpi:last-child { border-inline-end: 0; }
+    .kpi:first-child { padding-inline-start: 0; }
+    .kpi:last-child { padding-inline-end: 0; }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .kpi-value {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 2.4vw, 2.05rem);
+      font-weight: 650;
+      color: var(--primary);
+      margin: 0.45rem 0 0.35rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      font-variant-numeric: tabular-nums;
+      animation: kpiFade 700ms var(--ease) both;
+    }
+    .kpi:nth-child(2) .kpi-value { animation-delay: 70ms; }
+    .kpi:nth-child(3) .kpi-value { animation-delay: 140ms; }
+    .kpi:nth-child(4) .kpi-value { animation-delay: 210ms; }
+    @keyframes kpiFade {
+      from { opacity: 0; transform: translateY(6px); filter: blur(2px); }
+      to { opacity: 1; transform: none; filter: none; }
+    }
+    .kpi-value::after {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 2px;
+      margin-top: 0.55rem;
+      border-radius: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .kpi-delta {
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .kpi-delta.up { color: var(--color-success); }
+    .kpi-delta.down { color: var(--color-error); }
+    .kpi-delta.neutral { color: var(--text-muted); font-weight: 500; }
+
+    /* ── Interactive panel (table needs a container) ── */
+    .panel {
+      background: rgb(255 252 248 / 0.88);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--depth);
+      overflow: hidden;
+    }
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      padding: var(--space-5) var(--space-6);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .panel-head h2 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-ink-900);
+    }
+    .panel-head p {
+      margin-top: 0.25rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .filters {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .filters input,
+    .filters select {
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+    }
+    .filters input { min-width: 200px; }
+    .filters input:focus-visible,
+    .filters select:focus-visible {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgb(196 165 116 / 0.22);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    th {
+      text-align: start;
+      padding: 0.75rem var(--space-5);
+      background: rgb(242 247 244 / 0.65);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid var(--hairline);
+    }
+    td {
+      padding: 0.95rem var(--space-5);
+      border-bottom: 1px solid var(--hairline);
+      color: var(--color-ink-700);
+      transition: background var(--duration) var(--ease);
+    }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:hover td {
+      background: rgb(242 247 244 / 0.55);
+    }
+    td.num {
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.22rem 0.55rem;
+      border-radius: var(--radius-sm);
+    }
+    .badge-lead {
+      background: var(--color-champagne-100);
+      color: var(--color-champagne-700);
+    }
+    .badge-follow {
+      background: var(--color-olive-100);
+      color: var(--primary);
+    }
+    .badge-win {
+      background: #e4f3ec;
+      color: var(--color-success);
+    }
+    .badge-wait {
+      background: #f8efd9;
+      color: var(--color-warning);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: var(--space-6);
+      margin-top: var(--space-6);
+    }
+    @media (max-width: 1000px) {
+      .split { grid-template-columns: 1fr; }
+    }
+
+    .funnel {
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+    .funnel-row {
+      display: grid;
+      grid-template-columns: 72px 1fr 44px;
+      gap: var(--space-3);
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .funnel-row > span:first-child {
+      color: var(--color-ink-700);
+      font-weight: 500;
+    }
+    .bar-track {
+      height: 8px;
+      background: var(--color-stone-100);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      width: 0;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--color-olive-800), var(--color-champagne-500));
+      animation: barGrow 900ms var(--ease) 350ms both;
+    }
+    @keyframes barGrow {
+      from { width: 0; }
+    }
+    .funnel-row span:last-child {
+      font-family: var(--font-display);
+      font-weight: 650;
+      color: var(--primary);
+      text-align: end;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .content,
+      .kpi-value,
+      .nav a.active::before,
+      .bar-fill {
+        animation: none !important;
+      }
+      .bar-fill { width: var(--w, 100%) !important; }
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <span>
+      <strong>Concept A — آرامِ ارتقایافته</strong>
+      <span class="rec">تأیید‌شده</span>
+      · منبع حقیقت بصری · شِل زنده در erp/dashboard.html
+    </span>
+    <a href="../dashboard.html">باز کردن ERP زنده</a>
+  </div>
+
+  <div class="app">
+    <aside class="sidebar" aria-label="ناوبری اصلی">
+      <div class="brand">
+        <img src="../assets/logo/armonia-mark.svg" alt="" width="40" height="40" />
+        <div>
+          <div class="brand-text">آرمونیا</div>
+          <div class="brand-sub">پنل مدیریت</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-group">
+          <div class="nav-label">اجرایی</div>
+          <a class="active" href="#" aria-current="page"><span class="dot" aria-hidden="true"></span> داشبورد</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">فروش و CRM</div>
+          <a href="#"><span class="dot" aria-hidden="true"></span> لیدها</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> قیف فروش</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> قراردادها</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">عملیات کلینیک</div>
+          <a href="#"><span class="dot" aria-hidden="true"></span> نوبت‌دهی</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> بیماران</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> پزشکان</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">مالی و سیستم</div>
+          <a href="#"><span class="dot" aria-hidden="true"></span> مالی</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> تنظیمات</a>
+        </div>
+      </nav>
+
+      <div class="sidebar-foot">
+        شعبه فعال: <span>تهران — ونک</span><br />
+        همگام‌سازی: چند لحظه پیش
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="header">
+        <div>
+          <h1>داشبورد مدیریتی</h1>
+          <div class="header-meta">
+            امروز · <time datetime="2026-08-06">۱۵ مرداد ۱۴۰۵</time>
+            · نقش: مدیر عملیات
+          </div>
+        </div>
+        <div class="switchers">
+          <label class="switch">
+            <span>شعبه</span>
+            <select aria-label="انتخاب شعبه">
+              <option>تهران — ونک</option>
+              <option>تهران — سعادت‌آباد</option>
+              <option>اصفهان — مرکزی</option>
+            </select>
+          </label>
+          <label class="switch">
+            <span>کلینیک</span>
+            <select aria-label="انتخاب کلینیک">
+              <option>همهٔ کلینیک‌ها</option>
+              <option>کلینیک پوست</option>
+              <option>کلینیک لیزر</option>
+            </select>
+          </label>
+          <div class="user-chip">
+            <div class="avatar" aria-hidden="true">س‌م</div>
+            سارا محمدی
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="main">
+        <section class="kpi-band" aria-label="شاخص‌های کلیدی">
+          <div class="kpi">
+            <div class="kpi-label">فروش ماه</div>
+            <div class="kpi-value">۲٫۴۸ میلیارد</div>
+            <div class="kpi-delta up">↑ ۱۲٪ نسبت به ماه قبل</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">سود خالص</div>
+            <div class="kpi-value">۶۸۰ میلیون</div>
+            <div class="kpi-delta up">↑ ۸٪</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">نوبت‌های امروز</div>
+            <div class="kpi-value">۴۲</div>
+            <div class="kpi-delta down">۳ کنسلی</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">لیدهای باز</div>
+            <div class="kpi-value">۱۲۸</div>
+            <div class="kpi-delta neutral">۲۴ پیگیری امروز</div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="leads-heading">
+          <div class="panel-head">
+            <div>
+              <h2 id="leads-heading">آخرین لیدها و پیگیری‌ها</h2>
+              <p>فیلتر بر اساس نام، موبایل یا وضعیت</p>
+            </div>
+            <div class="filters">
+              <input type="search" placeholder="جستجوی نام یا موبایل…" aria-label="جستجوی لید" />
+              <select aria-label="فیلتر وضعیت">
+                <option>همهٔ وضعیت‌ها</option>
+                <option>لید جدید</option>
+                <option>پیگیری</option>
+                <option>قرارداد</option>
+              </select>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>نام</th>
+                <th>خدمت</th>
+                <th>شعبه</th>
+                <th>مشاور</th>
+                <th>وضعیت</th>
+                <th>آخرین تماس</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>مینا رضایی</td>
+                <td>بوتاکس پیشانی</td>
+                <td>ونک</td>
+                <td>نرگس احمدی</td>
+                <td><span class="badge badge-lead">لید جدید</span></td>
+                <td class="num">۱۴۰۵/۰۵/۱۵ · ۱۰:۲۰</td>
+              </tr>
+              <tr>
+                <td>علی کریمی</td>
+                <td>لیزر فول‌بادی</td>
+                <td>سعادت‌آباد</td>
+                <td>رضا نوری</td>
+                <td><span class="badge badge-follow">پیگیری</span></td>
+                <td class="num">۱۴۰۵/۰۵/۱۴ · ۱۸:۰۵</td>
+              </tr>
+              <tr>
+                <td>زهرا حسینی</td>
+                <td>فیلر لب</td>
+                <td>ونک</td>
+                <td>نرگس احمدی</td>
+                <td><span class="badge badge-win">قرارداد</span></td>
+                <td class="num">۱۴۰۵/۰۵/۱۴ · ۱۲:۴۰</td>
+              </tr>
+              <tr>
+                <td>سحر مرادی</td>
+                <td>مشاوره پوست</td>
+                <td>اصفهان</td>
+                <td>مریم کاظمی</td>
+                <td><span class="badge badge-wait">در انتظار</span></td>
+                <td class="num">۱۴۰۵/۰۵/۱۳ · ۱۶:۱۵</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div class="split">
+          <section class="panel" aria-labelledby="branches-heading">
+            <div class="panel-head">
+              <div>
+                <h2 id="branches-heading">عملکرد شعب</h2>
+                <p>هفتهٔ جاری · مقایسهٔ نوبت، فروش و تبدیل</p>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>شعبه</th>
+                  <th>نوبت</th>
+                  <th>فروش</th>
+                  <th>نرخ تبدیل</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>تهران — ونک</td>
+                  <td class="num">۱۸۶</td>
+                  <td class="num">۹۲۰ م</td>
+                  <td class="num">۳۴٪</td>
+                </tr>
+                <tr>
+                  <td>تهران — سعادت‌آباد</td>
+                  <td class="num">۱۴۲</td>
+                  <td class="num">۷۱۰ م</td>
+                  <td class="num">۲۹٪</td>
+                </tr>
+                <tr>
+                  <td>اصفهان — مرکزی</td>
+                  <td class="num">۹۸</td>
+                  <td class="num">۴۸۰ م</td>
+                  <td class="num">۳۱٪</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="panel" aria-labelledby="funnel-heading">
+            <div class="panel-head">
+              <div>
+                <h2 id="funnel-heading">قیف فروش</h2>
+                <p>از لید تا قرارداد · شعبهٔ فعال</p>
+              </div>
+            </div>
+            <div class="funnel">
+              <div class="funnel-row">
+                <span>لید</span>
+                <div class="bar-track"><div class="bar-fill" style="--w:100%;width:100%"></div></div>
+                <span>۱۲۸</span>
+              </div>
+              <div class="funnel-row">
+                <span>تماس</span>
+                <div class="bar-track"><div class="bar-fill" style="--w:72%;width:72%"></div></div>
+                <span>۹۲</span>
+              </div>
+              <div class="funnel-row">
+                <span>مشاوره</span>
+                <div class="bar-track"><div class="bar-fill" style="--w:48%;width:48%"></div></div>
+                <span>۶۱</span>
+              </div>
+              <div class="funnel-row">
+                <span>قرارداد</span>
+                <div class="bar-track"><div class="bar-fill" style="--w:28%;width:28%"></div></div>
+                <span>۳۶</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

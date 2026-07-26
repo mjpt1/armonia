@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پرونده بیمار | آرمونیا ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/estedad/wght.css" />
+  <link rel="stylesheet" href="assets/design-tokens.css" />
+  <link rel="stylesheet" href="assets/erp.css" />
+</head>
+<body data-page="patients">
+  <div class="app">
+    <aside class="sidebar" aria-label="ناوبری اصلی">
+      <a class="brand" href="dashboard.html">
+        <img src="assets/logo/armonia-mark.svg" alt="" width="40" height="40" />
+        <div>
+          <div class="brand-text">آرمونیا</div>
+          <div class="brand-sub">پنل مدیریت</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <div class="nav-group">
+          <div class="nav-label">اجرایی</div>
+          <a data-nav="dashboard" href="dashboard.html"><span class="dot" aria-hidden="true"></span> داشبورد</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">فروش و CRM</div>
+          <a data-nav="crm" href="crm.html"><span class="dot" aria-hidden="true"></span> لیدها</a>
+          <a data-nav="crm" href="crm.html#funnel"><span class="dot" aria-hidden="true"></span> قیف فروش</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> قراردادها</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">عملیات کلینیک</div>
+          <a data-nav="appointments" href="appointments.html"><span class="dot" aria-hidden="true"></span> نوبت‌دهی</a>
+          <a data-nav="patients" href="patients.html"><span class="dot" aria-hidden="true"></span> بیماران</a>
+          <a href="#"><span class="dot" aria-hidden="true"></span> پزشکان</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">مالی و سیستم</div>
+          <a href="#"><span class="dot" aria-hidden="true"></span> مالی</a>
+          <a data-nav="settings" href="settings.html"><span class="dot" aria-hidden="true"></span> تنظیمات</a>
+        </div>
+      </nav>
+
+      <div class="sidebar-foot">
+        شعبه فعال: <span data-branch-label>تهران — ونک</span><br />
+        همگام‌سازی: چند لحظه پیش
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="header">
+        <div>
+          <h1>پرونده بیمار</h1>
+          <div class="header-meta">
+            پرونده الکترونیک · <time datetime="2026-08-06">۱۵ مرداد ۱۴۰۵</time>
+            · نقش: پزشک / پذیرش
+          </div>
+        </div>
+        <div class="switchers">
+          <label class="switch">
+            <span>شعبه</span>
+            <select id="branch-switch" aria-label="انتخاب شعبه">
+              <option>تهران — ونک</option>
+              <option>تهران — سعادت‌آباد</option>
+              <option>اصفهان — مرکزی</option>
+            </select>
+          </label>
+          <label class="switch">
+            <span>کلینیک</span>
+            <select aria-label="انتخاب کلینیک">
+              <option>کلینیک پوست</option>
+              <option>کلینیک لیزر</option>
+              <option>همهٔ کلینیک‌ها</option>
+            </select>
+          </label>
+          <div class="user-chip">
+            <div class="avatar" aria-hidden="true">س‌م</div>
+            سارا محمدی
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="main">
+        <div class="stack-lg stack">
+          <section class="panel" data-filter-table aria-labelledby="patients-list-heading">
+            <div class="panel-head">
+              <div>
+                <h2 id="patients-list-heading">فهرست بیماران</h2>
+                <p>جستجو بر اساس نام، کد ملی یا موبایل</p>
+              </div>
+              <div class="filters">
+                <input type="search" data-filter-q placeholder="جستجوی بیمار…" aria-label="جستجوی بیمار" />
+                <button type="button" class="btn btn-primary">بیمار جدید</button>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>نام</th>
+                  <th>کد ملی</th>
+                  <th>موبایل</th>
+                  <th>آخرین ویزیت</th>
+                  <th>شعبه</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>مینا رضایی</td>
+                  <td class="num" dir="ltr">۰۰۱······۳</td>
+                  <td class="num" dir="ltr">۰۹۱۲···۴۵۶۷</td>
+                  <td class="num">۱۴۰۵/۰۵/۱۵</td>
+                  <td>ونک</td>
+                  <td><a href="#file">پرونده</a></td>
+                </tr>
+                <tr>
+                  <td>علی کریمی</td>
+                  <td class="num" dir="ltr">۰۰۲······۸</td>
+                  <td class="num" dir="ltr">۰۹۳۵···۱۲۳۴</td>
+                  <td class="num">۱۴۰۵/۰۵/۱۴</td>
+                  <td>سعادت‌آباد</td>
+                  <td><a href="#file">پرونده</a></td>
+                </tr>
+                <tr>
+                  <td>زهرا حسینی</td>
+                  <td class="num" dir="ltr">۰۰۳······۱</td>
+                  <td class="num" dir="ltr">۰۹۱۰···۸۸۹۰</td>
+                  <td class="num">۱۴۰۵/۰۵/۱۴</td>
+                  <td>ونک</td>
+                  <td><a href="#file">پرونده</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="panel" id="file" data-tabs aria-labelledby="file-heading">
+            <div class="patient-hero">
+              <div class="patient-id">
+                <div class="patient-avatar" aria-hidden="true">م‌ر</div>
+                <div>
+                  <h2 id="file-heading">مینا رضایی</h2>
+                  <p>کد پرونده: <span dir="ltr">ARM-۱۴۰۵-۰۸۴۲</span> · عضو از فروردین ۱۴۰۴</p>
+                </div>
+              </div>
+              <div class="filters">
+                <a class="btn btn-ghost" href="appointments.html">رزرو نوبت</a>
+                <button type="button" class="btn btn-primary">ویرایش اطلاعات</button>
+              </div>
+            </div>
+
+            <div class="meta-grid">
+              <div class="meta-item">
+                <span>کد ملی</span>
+                <strong dir="ltr">۰۰۱······۳</strong>
+              </div>
+              <div class="meta-item">
+                <span>موبایل</span>
+                <strong dir="ltr">۰۹۱۲···۴۵۶۷</strong>
+              </div>
+              <div class="meta-item">
+                <span>تاریخ تولد</span>
+                <strong>۱۲ تیر ۱۳۷۲</strong>
+              </div>
+              <div class="meta-item">
+                <span>پزشک معالج</span>
+                <strong>دکـتر احمدی</strong>
+              </div>
+              <div class="meta-item">
+                <span>حساسیت</span>
+                <strong>ندارد</strong>
+              </div>
+              <div class="meta-item">
+                <span>شعبه ترجیحی</span>
+                <strong>تهران — ونک</strong>
+              </div>
+            </div>
+
+            <div class="tabs" role="tablist" aria-label="بخش‌های پرونده">
+              <button type="button" class="tab active" role="tab" aria-selected="true" data-tab="history">سوابق درمان</button>
+              <button type="button" class="tab" role="tab" aria-selected="false" data-tab="docs">مدارک و اسناد</button>
+              <button type="button" class="tab" role="tab" aria-selected="false" data-tab="appts">نوبت‌ها</button>
+              <button type="button" class="tab" role="tab" aria-selected="false" data-tab="notes">یادداشت‌ها</button>
+            </div>
+
+            <div class="tab-panel active" data-panel="history" role="tabpanel">
+              <ul class="timeline">
+                <li>
+                  <time datetime="2026-08-06">۱۵ مرداد ۱۴۰۵</time>
+                  <div class="tl-body">
+                    <strong>بوتاکس پیشانی</strong>
+                    <p>دکـتر احمدی · ۲۰ واحد · بدون عارضه · پیگیری دو هفته‌ای</p>
+                  </div>
+                </li>
+                <li>
+                  <time datetime="2026-06-20">۳۰ خرداد ۱۴۰۵</time>
+                  <div class="tl-body">
+                    <strong>مشاوره پوست</strong>
+                    <p>پیشنهاد پلن ترکیبی بوتاکس + مراقبت خانگی · قرارداد ثبت شد</p>
+                  </div>
+                </li>
+                <li>
+                  <time datetime="2026-03-10">۲۰ اسفند ۱۴۰۴</time>
+                  <div class="tl-body">
+                    <strong>پاکسازی پوست</strong>
+                    <p>جلسه اول دورهٔ سه‌جلسه‌ای · رضایت بیمار خوب</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tab-panel" data-panel="docs" role="tabpanel" hidden>
+              <div class="doc-row">
+                <div>
+                  <strong>رضایت‌نامه درمان</strong>
+                  <span> · PDF · ۱۴۰۵/۰۵/۱۵</span>
+                </div>
+                <button type="button" class="btn btn-ghost">مشاهده</button>
+              </div>
+              <div class="doc-row">
+                <div>
+                  <strong>عکس قبل از درمان</strong>
+                  <span> · JPG · ۱۴۰۵/۰۵/۱۵</span>
+                </div>
+                <button type="button" class="btn btn-ghost">مشاهده</button>
+              </div>
+              <div class="doc-row">
+                <div>
+                  <strong>قرارداد خدمات</strong>
+                  <span> · PDF · ۳۰ خرداد ۱۴۰۵</span>
+                </div>
+                <button type="button" class="btn btn-ghost">مشاهده</button>
+              </div>
+              <div class="doc-row">
+                <div>
+                  <strong>کارت ملی (پشت و رو)</strong>
+                  <span> · JPG · فروردین ۱۴۰۴</span>
+                </div>
+                <button type="button" class="btn btn-ghost">مشاهده</button>
+              </div>
+            </div>
+
+            <div class="tab-panel" data-panel="appts" role="tabpanel" hidden>
+              <table>
+                <thead>
+                  <tr>
+                    <th>تاریخ</th>
+                    <th>ساعت</th>
+                    <th>خدمت</th>
+                    <th>پزشک</th>
+                    <th>وضعیت</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="num">۱۵ مرداد ۱۴۰۵</td>
+                    <td class="num">۰۹:۰۰</td>
+                    <td>بوتاکس پیشانی</td>
+                    <td>دکـتر احمدی</td>
+                    <td><span class="badge badge-done">انجام‌شده</span></td>
+                  </tr>
+                  <tr>
+                    <td class="num">۲۹ مرداد ۱۴۰۵</td>
+                    <td class="num">۱۰:۳۰</td>
+                    <td>پیگیری بوتاکس</td>
+                    <td>دکـتر احمدی</td>
+                    <td><span class="badge badge-wait">رزرو شده</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="tab-panel" data-panel="notes" role="tabpanel" hidden>
+              <ul class="timeline">
+                <li>
+                  <time datetime="2026-08-06">۱۵ مرداد ۱۴۰۵</time>
+                  <div class="tl-body">
+                    <strong>پذیرش</strong>
+                    <p>بیمار ترجیح می‌دهد نوبت‌های صبح ونک باشد. تماس فقط پیامک.</p>
+                  </div>
+                </li>
+                <li>
+                  <time datetime="2026-06-20">۳۰ خرداد ۱۴۰۵</time>
+                  <div class="tl-body">
+                    <strong>مشاور فروش</strong>
+                    <p>علاقه‌مند به پکیج لیزر در پاییز؛ پیگیری در مهر.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="assets/erp.js"></script>
+</body>
+</html>

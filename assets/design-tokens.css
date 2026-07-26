@@ -1,0 +1,64 @@
+/* Armonia Design Tokens — three-layer */
+:root {
+  /* Primitive */
+  --color-olive-900: #1E3028;
+  --color-olive-800: #2F4A3C;
+  --color-olive-700: #3D5C4A;
+  --color-olive-100: #E8EFEA;
+  --color-olive-50: #F2F7F4;
+  --color-champagne-700: #A6854F;
+  --color-champagne-500: #C4A574;
+  --color-champagne-100: #F3EBDD;
+  --color-ivory: #F7F4EF;
+  --color-porcelain: #FFFCF8;
+  --color-stone-100: #EDE8E1;
+  --color-stone-300: #C9C0B4;
+  --color-ink-muted: #7A7268;
+  --color-ink-700: #3A3530;
+  --color-ink-900: #1C1916;
+  --color-white: #FFFFFF;
+  --color-success: #2F7D5B;
+  --color-warning: #C4892A;
+  --color-error: #B4453A;
+  --color-info: #3D6B7A;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --font-fa: "Vazirmatn", Tahoma, sans-serif;
+  --font-display: "Estedad", "Vazirmatn", Tahoma, sans-serif;
+
+  /* Semantic */
+  --bg: var(--color-ivory);
+  --surface: var(--color-porcelain);
+  --primary: var(--color-olive-800);
+  --primary-hover: var(--color-olive-700);
+  --accent: var(--color-champagne-500);
+  --text: var(--color-ink-900);
+  --text-muted: var(--color-ink-muted);
+  --border: var(--color-stone-100);
+  --border-strong: var(--color-stone-300);
+
+  /* Component */
+  --btn-primary-bg: var(--primary);
+  --btn-primary-fg: var(--color-porcelain);
+  --btn-radius: var(--radius-md);
+  --sidebar-width: 260px;
+  --table-row-h: 44px;
+  --kpi-radius: var(--radius-lg);
+  --kpi-padding: var(--space-5);
+  --shadow-soft: 0 1px 2px rgb(28 25 22 / 0.04), 0 8px 24px rgb(28 25 22 / 0.04);
+  --duration: 280ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

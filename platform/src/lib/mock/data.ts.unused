@@ -1,0 +1,415 @@
+import type {
+  AppointmentSlot,
+  Branch,
+  Clinic,
+  Doctor,
+  KpiItem,
+  Lead,
+  Patient,
+  Service,
+  SessionUser,
+} from "@/lib/types/domain";
+
+export const branches: Branch[] = [
+  {
+    id: "thr-van",
+    name: "تهران — ونک",
+    city: "تهران",
+    code: "THR-VAN",
+    address: "خیابان ولیعصر، بالاتر از ونک",
+    active: true,
+    clinicCount: 3,
+    userCount: 12,
+  },
+  {
+    id: "thr-saa",
+    name: "تهران — سعادت‌آباد",
+    city: "تهران",
+    code: "THR-SAA",
+    address: "بلوار دریا، پلاک ۲۸",
+    active: true,
+    clinicCount: 2,
+    userCount: 8,
+  },
+  {
+    id: "isf-ctr",
+    name: "اصفهان — مرکزی",
+    city: "اصفهان",
+    code: "ISF-CTR",
+    address: "چهارباغ عباسی",
+    active: true,
+    clinicCount: 2,
+    userCount: 6,
+  },
+];
+
+export const clinics: Clinic[] = [
+  {
+    id: "skin-van",
+    name: "کلینیک پوست ونک",
+    branchId: "thr-van",
+    type: "پوست و زیبایی",
+    doctorCount: 4,
+    active: true,
+  },
+  {
+    id: "laser-van",
+    name: "کلینیک لیزر ونک",
+    branchId: "thr-van",
+    type: "لیزر",
+    doctorCount: 3,
+    active: true,
+  },
+  {
+    id: "skin-saa",
+    name: "کلینیک پوست سعادت‌آباد",
+    branchId: "thr-saa",
+    type: "پوست و زیبایی",
+    doctorCount: 3,
+    active: true,
+  },
+  {
+    id: "inject-isf",
+    name: "کلینیک تزریق اصفهان",
+    branchId: "isf-ctr",
+    type: "تزریق",
+    doctorCount: 2,
+    active: true,
+  },
+];
+
+export const doctors: Doctor[] = [
+  {
+    id: "doc-nouri",
+    name: "دکتر سارا نوری",
+    specialty: "پوست و مو",
+    branchId: "thr-van",
+    experienceYears: 15,
+    scheduleNote: "شنبه‌ها و دوشنبه‌ها",
+    photoUrl:
+      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "doc-kazemi",
+    name: "دکتر امیر کاظمی",
+    specialty: "زیبایی و لیزر",
+    branchId: "thr-saa",
+    experienceYears: 12,
+    scheduleNote: "یکشنبه تا چهارشنبه",
+    photoUrl:
+      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "doc-amini",
+    name: "دکتر مریم امینی",
+    specialty: "جوان‌سازی صورت",
+    branchId: "isf-ctr",
+    experienceYears: 10,
+    scheduleNote: "سه‌شنبه و پنج‌شنبه",
+    photoUrl:
+      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "doc-reza",
+    name: "دکتر رضا امینی",
+    specialty: "لیزر و پوست",
+    branchId: "thr-van",
+    experienceYears: 8,
+    scheduleNote: "صبح‌ها",
+    photoUrl:
+      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80",
+  },
+];
+
+export const services: Service[] = [
+  {
+    id: "svc-botox",
+    name: "بوتاکس پیشانی و دور چشم",
+    description: "تزریق تخصصی با ارزیابی عضلات صورت و پیگیری پس از درمان.",
+    priceFromLabel: "از ۴٫۵ میلیون تومان",
+    category: "تزریق",
+  },
+  {
+    id: "svc-filler",
+    name: "فیلر لب و گونه",
+    description: "طراحی فرم طبیعی با برندهای تأییدشده شبکه آرمونیا.",
+    priceFromLabel: "از ۸ میلیون تومان",
+    category: "تزریق",
+  },
+  {
+    id: "svc-laser",
+    name: "لیزر فول‌بادی",
+    description: "برنامهٔ چندجلسه‌ای با دستگاه استاندارد شعب طرف‌قرارداد.",
+    priceFromLabel: "از ۱۸ میلیون تومان",
+    category: "لیزر",
+  },
+  {
+    id: "svc-meso",
+    name: "مزوتراپی پوست",
+    description: "آبرسانی و بهبود بافت با پروتکل پزشک معالج.",
+    priceFromLabel: "از ۳٫۲ میلیون تومان",
+    category: "پوست",
+  },
+  {
+    id: "svc-consult",
+    name: "مشاوره تخصصی زیبایی",
+    description: "ارزیابی اولیه، برنامهٔ درمان و معرفی پزشک مناسب.",
+    priceFromLabel: "رایگان / حضوری",
+    category: "مشاوره",
+  },
+];
+
+export const leads: Lead[] = [
+  {
+    id: "lead-1",
+    name: "مینا رضایی",
+    mobileMasked: "۰۹۱۲···۴۵۶۷",
+    service: "بوتاکس پیشانی",
+    source: "اینستاگرام",
+    advisor: "نرگس احمدی",
+    status: "lead",
+    branchId: "thr-van",
+    lastContactJalali: "۱۴۰۵/۰۵/۱۵ · ۱۰:۲۰",
+  },
+  {
+    id: "lead-2",
+    name: "علی کریمی",
+    mobileMasked: "۰۹۳۵···۱۲۳۴",
+    service: "لیزر فول‌بادی",
+    source: "وب‌سایت",
+    advisor: "رضا نوری",
+    status: "follow",
+    branchId: "thr-saa",
+    lastContactJalali: "۱۴۰۵/۰۵/۱۴ · ۱۸:۰۵",
+  },
+  {
+    id: "lead-3",
+    name: "زهرا حسینی",
+    mobileMasked: "۰۹۱۰···۸۸۹۰",
+    service: "فیلر لب",
+    source: "معرفی",
+    advisor: "نرگس احمدی",
+    status: "win",
+    branchId: "thr-van",
+    lastContactJalali: "۱۴۰۵/۰۵/۱۴ · ۱۲:۴۰",
+  },
+  {
+    id: "lead-4",
+    name: "سحر مرادی",
+    mobileMasked: "۰۹۳۶···۲۲۱۱",
+    service: "مشاوره پوست",
+    source: "تماس ورودی",
+    advisor: "مریم کاظمی",
+    status: "wait",
+    branchId: "isf-ctr",
+    lastContactJalali: "۱۴۰۵/۰۵/۱۳ · ۱۶:۱۵",
+  },
+  {
+    id: "lead-5",
+    name: "نیما جعفری",
+    mobileMasked: "۰۹۱۲···۷۷۰۰",
+    service: "هایفو صورت",
+    source: "گوگل",
+    advisor: "رضا نوری",
+    status: "follow",
+    branchId: "thr-saa",
+    lastContactJalali: "۱۴۰۵/۰۵/۱۳ · ۱۱:۳۰",
+  },
+  {
+    id: "lead-6",
+    name: "الهام نادری",
+    mobileMasked: "۰۹۳۹···۳۳۴۴",
+    service: "لیزر موهای زائد",
+    source: "اینستاگرام",
+    advisor: "نرگس احمدی",
+    status: "lead",
+    branchId: "thr-van",
+    lastContactJalali: "۱۴۰۵/۰۵/۱۲ · ۱۹:۰۰",
+  },
+];
+
+export const patients: Patient[] = [
+  {
+    id: "pat-1",
+    name: "مینا رضایی",
+    nationalIdMasked: "۰۰۱······۳",
+    mobileMasked: "۰۹۱۲···۴۵۶۷",
+    branchId: "thr-van",
+    lastVisitJalali: "۱۴۰۵/۰۵/۱۵",
+    fileCode: "ARM-۱۴۰۵-۰۸۴۲",
+    birthJalali: "۱۲ تیر ۱۳۷۲",
+    avatarInitials: "م‌ر",
+  },
+  {
+    id: "pat-2",
+    name: "علی کریمی",
+    nationalIdMasked: "۰۰۲······۸",
+    mobileMasked: "۰۹۳۵···۱۲۳۴",
+    branchId: "thr-saa",
+    lastVisitJalali: "۱۴۰۵/۰۵/۱۴",
+    fileCode: "ARM-۱۴۰۵-۰۷۹۱",
+    avatarInitials: "ع‌ک",
+  },
+  {
+    id: "pat-3",
+    name: "زهرا حسینی",
+    nationalIdMasked: "۰۰۳······۱",
+    mobileMasked: "۰۹۱۰···۸۸۹۰",
+    branchId: "thr-van",
+    lastVisitJalali: "۱۴۰۵/۰۵/۱۴",
+    fileCode: "ARM-۱۴۰۵-۰۷۵۵",
+    avatarInitials: "ز‌ح",
+  },
+];
+
+export const appointmentSlots: AppointmentSlot[] = [
+  {
+    time: "۰۹:۰۰",
+    doctorId: "doc-nouri",
+    patientName: "مینا رضایی",
+    service: "بوتاکس · ۳۰ دقیقه",
+    kind: "default",
+  },
+  {
+    time: "۰۹:۰۰",
+    doctorId: "doc-kazemi",
+    patientName: "علی کریمی",
+    service: "لیزر فول‌بادی",
+    kind: "laser",
+  },
+  {
+    time: "۰۹:۰۰",
+    doctorId: "doc-reza",
+    patientName: "سحر مرادی",
+    service: "مشاوره پوست",
+    kind: "consult",
+  },
+  {
+    time: "۱۰:۰۰",
+    doctorId: "doc-nouri",
+    patientName: "زهرا حسینی",
+    service: "فیلر لب",
+    kind: "default",
+  },
+  {
+    time: "۱۰:۰۰",
+    doctorId: "doc-amini",
+    patientName: "الهام نادری",
+    service: "مزوتراپی",
+    kind: "default",
+  },
+  {
+    time: "۱۱:۰۰",
+    doctorId: "doc-kazemi",
+    patientName: "نیما جعفری",
+    service: "لیزر صورت",
+    kind: "laser",
+  },
+];
+
+export const dashboardKpis: KpiItem[] = [
+  {
+    label: "فروش ماه",
+    value: "۲٫۴۸ میلیارد",
+    delta: "↑ ۱۲٪ نسبت به ماه قبل",
+    tone: "up",
+  },
+  {
+    label: "سود خالص",
+    value: "۶۸۰ میلیون",
+    delta: "↑ ۸٪",
+    tone: "up",
+  },
+  {
+    label: "نوبت‌های امروز",
+    value: "۴۲",
+    delta: "۳ کنسلی",
+    tone: "down",
+  },
+  {
+    label: "لیدهای باز",
+    value: "۱۲۸",
+    delta: "۲۴ پیگیری امروز",
+    tone: "neutral",
+  },
+];
+
+export const crmKpis: KpiItem[] = [
+  {
+    label: "لیدهای باز",
+    value: "۱۲۸",
+    delta: "۲۴ پیگیری امروز",
+    tone: "neutral",
+  },
+  {
+    label: "تماس‌های امروز",
+    value: "۳۷",
+    delta: "↑ ۹ نسبت به دیروز",
+    tone: "up",
+  },
+  {
+    label: "نرخ تبدیل ماه",
+    value: "۲۸٪",
+    delta: "↑ ۳ واحد",
+    tone: "up",
+  },
+  {
+    label: "قراردادهای هفته",
+    value: "۱۴",
+    delta: "مجموع ۸۲۰ میلیون",
+    tone: "neutral",
+  },
+];
+
+export const appointmentKpis: KpiItem[] = [
+  {
+    label: "نوبت‌های امروز",
+    value: "۴۲",
+    delta: "۸ باقی‌مانده",
+    tone: "neutral",
+  },
+  {
+    label: "تأیید‌شده",
+    value: "۳۵",
+    delta: "۸۳٪ حضور پیش‌بینی",
+    tone: "up",
+  },
+  {
+    label: "کنسلی",
+    value: "۳",
+    delta: "۲ جابه‌جایی",
+    tone: "down",
+  },
+  {
+    label: "اسلات خالی",
+    value: "۱۱",
+    delta: "تا ساعت ۲۰",
+    tone: "neutral",
+  },
+];
+
+export const funnelStages = [
+  { label: "لید", count: "۱۲۸", width: "100%" },
+  { label: "تماس", count: "۹۲", width: "72%" },
+  { label: "مشاوره", count: "۶۱", width: "48%" },
+  { label: "پیشنهاد", count: "۴۶", width: "36%" },
+  { label: "قرارداد", count: "۳۶", width: "28%" },
+];
+
+export const branchPerformance = [
+  { name: "تهران — ونک", appointments: "۱۸۶", sales: "۹۲۰ م", conversion: "۳۴٪" },
+  { name: "تهران — سعادت‌آباد", appointments: "۱۴۲", sales: "۷۱۰ م", conversion: "۲۹٪" },
+  { name: "اصفهان — مرکزی", appointments: "۹۸", sales: "۴۵۰ م", conversion: "۲۶٪" },
+];
+
+export const mockSession: SessionUser = {
+  id: "user-sara",
+  name: "سارا محمدی",
+  initials: "س‌م",
+  role: "OPS",
+  branchId: "thr-van",
+  clinicId: "all",
+};
+
+export const TODAY_JALALI = "۱۵ مرداد ۱۴۰۵";
+export const TODAY_ISO = "2026-08-06";

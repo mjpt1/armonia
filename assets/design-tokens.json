@@ -1,0 +1,88 @@
+{
+  "$schema": "https://design-tokens.org/schema.json",
+  "primitive": {
+    "color": {
+      "olive": {
+        "900": { "$value": "#1E3028", "$type": "color" },
+        "800": { "$value": "#2F4A3C", "$type": "color" },
+        "700": { "$value": "#3D5C4A", "$type": "color" },
+        "100": { "$value": "#E8EFEA", "$type": "color" },
+        "50": { "$value": "#F2F7F4", "$type": "color" }
+      },
+      "champagne": {
+        "700": { "$value": "#A6854F", "$type": "color" },
+        "500": { "$value": "#C4A574", "$type": "color" },
+        "100": { "$value": "#F3EBDD", "$type": "color" }
+      },
+      "neutral": {
+        "ivory": { "$value": "#F7F4EF", "$type": "color" },
+        "porcelain": { "$value": "#FFFCF8", "$type": "color" },
+        "stone100": { "$value": "#EDE8E1", "$type": "color" },
+        "stone300": { "$value": "#C9C0B4", "$type": "color" },
+        "inkMuted": { "$value": "#7A7268", "$type": "color" },
+        "ink700": { "$value": "#3A3530", "$type": "color" },
+        "ink900": { "$value": "#1C1916", "$type": "color" },
+        "white": { "$value": "#FFFFFF", "$type": "color" }
+      },
+      "semantic": {
+        "success": { "$value": "#2F7D5B", "$type": "color" },
+        "warning": { "$value": "#C4892A", "$type": "color" },
+        "error": { "$value": "#B4453A", "$type": "color" },
+        "info": { "$value": "#3D6B7A", "$type": "color" }
+      }
+    },
+    "spacing": {
+      "1": { "$value": "0.25rem", "$type": "dimension" },
+      "2": { "$value": "0.5rem", "$type": "dimension" },
+      "3": { "$value": "0.75rem", "$type": "dimension" },
+      "4": { "$value": "1rem", "$type": "dimension" },
+      "5": { "$value": "1.25rem", "$type": "dimension" },
+      "6": { "$value": "1.5rem", "$type": "dimension" },
+      "8": { "$value": "2rem", "$type": "dimension" },
+      "10": { "$value": "2.5rem", "$type": "dimension" },
+      "12": { "$value": "3rem", "$type": "dimension" }
+    },
+    "radius": {
+      "sm": { "$value": "4px", "$type": "dimension" },
+      "md": { "$value": "6px", "$type": "dimension" },
+      "lg": { "$value": "8px", "$type": "dimension" }
+    },
+    "fontFamily": {
+      "fa": { "$value": "Vazirmatn, Tahoma, sans-serif", "$type": "fontFamily" },
+      "display": { "$value": "Estedad, Vazirmatn, Tahoma, sans-serif", "$type": "fontFamily" }
+    }
+  },
+  "semantic": {
+    "color": {
+      "bg": { "$value": "{primitive.color.neutral.ivory}", "$type": "color" },
+      "surface": { "$value": "{primitive.color.neutral.porcelain}", "$type": "color" },
+      "primary": { "$value": "{primitive.color.olive.800}", "$type": "color" },
+      "primaryHover": { "$value": "{primitive.color.olive.700}", "$type": "color" },
+      "accent": { "$value": "{primitive.color.champagne.500}", "$type": "color" },
+      "text": { "$value": "{primitive.color.neutral.ink900}", "$type": "color" },
+      "textMuted": { "$value": "{primitive.color.neutral.inkMuted}", "$type": "color" },
+      "border": { "$value": "{primitive.color.neutral.stone100}", "$type": "color" },
+      "borderStrong": { "$value": "{primitive.color.neutral.stone300}", "$type": "color" }
+    }
+  },
+  "component": {
+    "button": {
+      "primaryBg": { "$value": "{semantic.color.primary}", "$type": "color" },
+      "primaryFg": { "$value": "{primitive.color.neutral.porcelain}", "$type": "color" },
+      "radius": { "$value": "{primitive.radius.md}", "$type": "dimension" }
+    },
+    "sidebar": {
+      "width": { "$value": "260px", "$type": "dimension" },
+      "bgA": { "$value": "{primitive.color.neutral.porcelain}", "$type": "color" },
+      "bgB": { "$value": "{primitive.color.olive.800}", "$type": "color" }
+    },
+    "table": {
+      "rowH": { "$value": "44px", "$type": "dimension" },
+      "headerBg": { "$value": "{primitive.color.olive.50}", "$type": "color" }
+    },
+    "kpi": {
+      "radius": { "$value": "{primitive.radius.lg}", "$type": "dimension" },
+      "padding": { "$value": "{primitive.spacing.5}", "$type": "dimension" }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+/** Finance module barrel */
+export {};

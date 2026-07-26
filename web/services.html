@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>خدمات | آرمونیا</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>
+    .page-hero { padding: 3rem 0 1rem; }
+    .page-hero h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--primary); margin-bottom: 0.5rem; }
+    .page-hero p { color: var(--text-muted); max-width: 36rem; }
+    .list { display: grid; gap: 0; border-top: 1px solid var(--border); }
+    .row {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 700px) {
+      .row { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+    .row h2 { font-size: 1.15rem; color: var(--primary); }
+    .row p { color: var(--text-muted); font-size: 0.95rem; }
+    .price { font-weight: 700; color: var(--accent); white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="logo" href="index.html"><img src="../assets/logo/armonia-mark.svg" alt="" /> آرمونیا</a>
+      <ul class="nav-links">
+        <li><a href="index.html">خانه</a></li>
+        <li><a href="services.html" aria-current="page">خدمات</a></li>
+        <li><a href="doctors.html">پزشکان</a></li>
+        <li><a href="booking.html">رزرو نوبت</a></li>
+        <li><a href="patient.html">پنل بیمار</a></li>
+        <li><a class="nav-cta" href="booking.html">مشاوره رایگان</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container page-hero">
+    <h1>خدمات</h1>
+    <p>تعرفه‌ها نمونهٔ نمایشی هستند؛ قیمت نهایی پس از مشاوره و بر اساس پروتکل پزشک اعلام می‌شود.</p>
+    <div class="list" style="margin-top:2rem">
+      <div class="row">
+        <h2>بوتاکس پیشانی و دور چشم</h2>
+        <p>تزریق تخصصی با ارزیابی عضلات صورت و پیگیری پس از درمان.</p>
+        <span class="price">از ۴٫۵ میلیون تومان</span>
+      </div>
+      <div class="row">
+        <h2>فیلر لب و گونه</h2>
+        <p>طراحی فرم طبیعی با برندهای تأییدشده شبکه آرمونیا.</p>
+        <span class="price">از ۸ میلیون تومان</span>
+      </div>
+      <div class="row">
+        <h2>لیزر فول‌بادی</h2>
+        <p>برنامهٔ چندجلسه‌ای با دستگاه استاندارد شعب طرف‌قرارداد.</p>
+        <span class="price">از ۱۸ میلیون تومان</span>
+      </div>
+      <div class="row">
+        <h2>مزوتراپی پوست</h2>
+        <p>آبرسانی و بهبود بافت با پروتکل پزشک معالج.</p>
+        <span class="price">از ۳٫۲ میلیون تومان</span>
+      </div>
+      <div class="row">
+        <h2>مشاوره تخصصی زیبایی</h2>
+        <p>ارزیابی اولیه، برنامهٔ درمان و معرفی پزشک مناسب.</p>
+        <span class="price">رایگان / حضوری</span>
+      </div>
+    </div>
+    <p style="margin:2rem 0 4rem"><a class="btn btn-primary" href="booking.html">رزرو نوبت برای این خدمات</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container copyright">© ۱۴۰۵ آرمونیا</div>
+  </footer>
+</body>
+</html>

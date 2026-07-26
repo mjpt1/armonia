@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پنل بیمار | آرمونیا</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0 4rem;
+      align-items: start;
+    }
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    .side {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+    }
+    .side h1 { font-size: 1.1rem; color: var(--primary); margin-bottom: 0.25rem; }
+    .side .sub { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .side nav { display: grid; gap: 0.25rem; }
+    .side a {
+      padding: 0.55rem 0.65rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-ink-700);
+    }
+    .side a.active, .side a:hover {
+      background: var(--color-olive-100);
+      color: var(--primary);
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+    .panel h2 { font-size: 1.2rem; color: var(--primary); margin-bottom: 1rem; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 700px) { .cards { grid-template-columns: 1fr; } }
+    .stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1rem;
+    }
+    .stat span { display: block; font-size: 0.75rem; color: var(--text-muted); }
+    .stat strong { font-size: 1.25rem; color: var(--primary); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { text-align: start; padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border); }
+    th { font-size: 0.75rem; color: var(--text-muted); }
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      background: var(--color-olive-100);
+      color: var(--primary);
+      border-radius: var(--radius-sm);
+    }
+    .empty-hint {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="logo" href="index.html"><img src="../assets/logo/armonia-mark.svg" alt="" /> آرمونیا</a>
+      <ul class="nav-links">
+        <li><a href="index.html">خانه</a></li>
+        <li><a href="services.html">خدمات</a></li>
+        <li><a href="doctors.html">پزشکان</a></li>
+        <li><a href="booking.html">رزرو نوبت</a></li>
+        <li><a href="patient.html" aria-current="page">پنل بیمار</a></li>
+        <li><a class="nav-cta" href="booking.html">مشاوره رایگان</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container layout">
+    <aside class="side">
+      <h1>مینا رضایی</h1>
+      <div class="sub">کد پرونده: AR-۱۴۰۵-۰۸۴۲</div>
+      <nav>
+        <a class="active" href="#">خلاصه</a>
+        <a href="#">نوبت‌ها</a>
+        <a href="#">مدارک و عکس‌ها</a>
+        <a href="#">نسخه‌ها</a>
+        <a href="#">اقساط و پرداخت</a>
+        <a href="#">قراردادها</a>
+      </nav>
+    </aside>
+
+    <section class="panel">
+      <h2>خلاصه پرونده</h2>
+      <div class="cards">
+        <div class="stat"><span>نوبت بعدی</span><strong>۲۰ مرداد · ۱۰:۳۰</strong></div>
+        <div class="stat"><span>پزشک معالج</span><strong>دکتر نوری</strong></div>
+        <div class="stat"><span>اقساط باقی‌مانده</span><strong>۲ قسط</strong></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>تاریخ</th>
+            <th>خدمت</th>
+            <th>شعبه</th>
+            <th>وضعیت</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>۱۵ تیر ۱۴۰۵</td>
+            <td>مشاوره زیبایی</td>
+            <td>ونک</td>
+            <td><span class="badge">انجام‌شده</span></td>
+          </tr>
+          <tr>
+            <td>۲۸ تیر ۱۴۰۵</td>
+            <td>بوتاکس پیشانی</td>
+            <td>ونک</td>
+            <td><span class="badge">انجام‌شده</span></td>
+          </tr>
+          <tr>
+            <td>۲۰ مرداد ۱۴۰۵</td>
+            <td>ویزیت کنترل</td>
+            <td>ونک</td>
+            <td><span class="badge">رزرو شده</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="empty-hint">اسکلت پنل بیمار برای طراحی — اتصال به پرونده واقعی و آپلود مدارک در فاز توسعه.</p>
+      <p style="margin-top:1rem"><a class="btn btn-primary" href="booking.html">رزرو نوبت جدید</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container copyright">© ۱۴۰۵ آرمونیا</div>
+  </footer>
+</body>
+</html>

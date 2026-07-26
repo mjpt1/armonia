@@ -1,0 +1,447 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  countries Country[]
+}
+
+model Country {
+  id             String         @id @default(cuid())
+  code           String         @unique
+  nameFa         String
+  nameEn         String?
+  organizationId String
+  organization   Organization   @relation(fields: [organizationId], references: [id])
+  provinces      Province[]
+}
+
+model Province {
+  id        String   @id @default(cuid())
+  nameFa    String
+  countryId String
+  country   Country  @relation(fields: [countryId], references: [id])
+  branches  Branch[]
+}
+
+model Branch {
+  id           String         @id @default(cuid())
+  code         String         @unique
+  name         String
+  city         String
+  address      String
+  active       Boolean        @default(true)
+  managerName  String?
+  provinceId   String?
+  province     Province?      @relation(fields: [provinceId], references: [id])
+  clinics      Clinic[]
+  users        User[]
+  doctors      Doctor[]
+  patients     Patient[]
+  leads        Lead[]
+  appointments Appointment[]
+  campaigns    Campaign[]
+  tickets      Ticket[]
+  contracts    Contract[]
+  payments     Payment[]
+  staff        Staff[]
+  createdAt    DateTime       @default(now())
+}
+
+model Clinic {
+  id           String         @id @default(cuid())
+  name         String
+  type         String
+  capacity     Int            @default(10)
+  active       Boolean        @default(true)
+  branchId     String
+  branch       Branch         @relation(fields: [branchId], references: [id])
+  doctors      Doctor[]
+  appointments Appointment[]
+  services     ClinicService[]
+  createdAt    DateTime       @default(now())
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  password     String
+  name         String
+  initials     String
+  role         String
+  active       Boolean        @default(true)
+  branchId     String?
+  branch       Branch?        @relation(fields: [branchId], references: [id])
+  clinicId     String?
+  activityLogs ActivityLog[]
+  notifications Notification[]
+  tickets      Ticket[]       @relation("TicketAssignee")
+  createdAt    DateTime       @default(now())
+}
+
+model Doctor {
+  id             String         @id @default(cuid())
+  name           String
+  specialty      String
+  experienceYears Int           @default(1)
+  scheduleNote   String?
+  photoUrl       String?
+  commissionPct  Float          @default(30)
+  contractNote   String?
+  active         Boolean        @default(true)
+  branchId       String
+  branch         Branch         @relation(fields: [branchId], references: [id])
+  clinicId       String?
+  clinic         Clinic?        @relation(fields: [clinicId], references: [id])
+  appointments   Appointment[]
+  prescriptions  Prescription[]
+  createdAt      DateTime       @default(now())
+}
+
+model Service {
+  id          String          @id @default(cuid())
+  name        String
+  description String
+  category    String
+  priceFrom   Int
+  active      Boolean         @default(true)
+  clinics     ClinicService[]
+  tariffs     Tariff[]
+  createdAt   DateTime        @default(now())
+}
+
+model ClinicService {
+  id       String @id @default(cuid())
+  clinicId String
+  clinic   Clinic @relation(fields: [clinicId], references: [id])
+  serviceId String
+  service  Service @relation(fields: [serviceId], references: [id])
+
+  @@unique([clinicId, serviceId])
+}
+
+model Tariff {
+  id        String   @id @default(cuid())
+  name      String
+  amount    Int
+  serviceId String?
+  service   Service? @relation(fields: [serviceId], references: [id])
+  active    Boolean  @default(true)
+}
+
+model Brand {
+  id     String  @id @default(cuid())
+  name   String
+  active Boolean @default(true)
+}
+
+model Language {
+  id     String  @id @default(cuid())
+  code   String  @unique
+  nameFa String
+  rtl    Boolean @default(true)
+  active Boolean @default(true)
+}
+
+model Lead {
+  id           String   @id @default(cuid())
+  name         String
+  mobile       String
+  service      String?
+  source       String?
+  advisor      String?
+  status       String   @default("lead")
+  notes        String?
+  branchId     String?
+  branch       Branch?  @relation(fields: [branchId], references: [id])
+  lastContact  DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Patient {
+  id            String              @id @default(cuid())
+  name          String
+  nationalId    String?
+  mobile        String
+  fileCode      String              @unique
+  birthJalali   String?
+  branchId      String?
+  branch        Branch?             @relation(fields: [branchId], references: [id])
+  documents     PatientDocument[]
+  treatments    TreatmentHistory[]
+  prescriptions Prescription[]
+  appointments  Appointment[]
+  contracts     Contract[]
+  payments      Payment[]
+  createdAt     DateTime            @default(now())
+}
+
+model PatientDocument {
+  id        String   @id @default(cuid())
+  title     String
+  kind      String   @default("file")
+  url       String?
+  meta      String?
+  patientId String
+  patient   Patient  @relation(fields: [patientId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model TreatmentHistory {
+  id          String   @id @default(cuid())
+  title       String
+  notes       String?
+  dateJalali  String?
+  patientId   String
+  patient     Patient  @relation(fields: [patientId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Prescription {
+  id        String   @id @default(cuid())
+  content   String
+  patientId String
+  patient   Patient  @relation(fields: [patientId], references: [id])
+  doctorId  String?
+  doctor    Doctor?  @relation(fields: [doctorId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Appointment {
+  id          String    @id @default(cuid())
+  startsAt    DateTime
+  status      String    @default("booked")
+  service     String?
+  notes       String?
+  kind        String    @default("default")
+  branchId    String?
+  branch      Branch?   @relation(fields: [branchId], references: [id])
+  clinicId    String?
+  clinic      Clinic?   @relation(fields: [clinicId], references: [id])
+  doctorId    String?
+  doctor      Doctor?   @relation(fields: [doctorId], references: [id])
+  patientId   String?
+  patient     Patient?  @relation(fields: [patientId], references: [id])
+  patientName String?
+  mobile      String?
+  createdAt   DateTime  @default(now())
+}
+
+model WaitlistEntry {
+  id          String   @id @default(cuid())
+  name        String
+  mobile      String
+  service     String?
+  preferredAt DateTime?
+  status      String   @default("waiting")
+  notes       String?
+  createdAt   DateTime @default(now())
+}
+
+model Campaign {
+  id        String   @id @default(cuid())
+  name      String
+  channel   String
+  budget    Int      @default(0)
+  spent     Int      @default(0)
+  leads     Int      @default(0)
+  status    String   @default("draft")
+  startDate DateTime?
+  endDate   DateTime?
+  branchId  String?
+  branch    Branch?  @relation(fields: [branchId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model ContentItem {
+  id          String   @id @default(cuid())
+  title       String
+  channel     String
+  status      String   @default("planned")
+  scheduledAt DateTime?
+  notes       String?
+  createdAt   DateTime @default(now())
+}
+
+model SocialAccount {
+  id        String   @id @default(cuid())
+  platform  String
+  handle    String
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id        String   @id @default(cuid())
+  kind      String
+  amount    Int
+  status    String   @default("pending")
+  method    String?
+  note      String?
+  branchId  String?
+  branch    Branch?  @relation(fields: [branchId], references: [id])
+  patientId String?
+  patient   Patient? @relation(fields: [patientId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Installment {
+  id          String    @id @default(cuid())
+  title       String
+  totalAmount Int
+  paidAmount  Int       @default(0)
+  dueDate     DateTime?
+  status      String    @default("open")
+  patientName String?
+  createdAt   DateTime  @default(now())
+}
+
+model Commission {
+  id         String   @id @default(cuid())
+  doctorName String
+  amount     Int
+  percent    Float
+  period     String
+  status     String   @default("pending")
+  createdAt  DateTime @default(now())
+}
+
+model Settlement {
+  id       String   @id @default(cuid())
+  party    String
+  kind     String
+  amount   Int
+  status   String   @default("pending")
+  period   String?
+  createdAt DateTime @default(now())
+}
+
+model Contract {
+  id          String    @id @default(cuid())
+  title       String
+  partyType   String
+  partyName   String
+  status      String    @default("draft")
+  signedAt    DateTime?
+  content     String?
+  branchId    String?
+  branch      Branch?   @relation(fields: [branchId], references: [id])
+  patientId   String?
+  patient     Patient?  @relation(fields: [patientId], references: [id])
+  createdAt   DateTime  @default(now())
+}
+
+model Staff {
+  id         String       @id @default(cuid())
+  name       String
+  roleTitle  String
+  mobile     String?
+  active     Boolean      @default(true)
+  branchId   String?
+  branch     Branch?      @relation(fields: [branchId], references: [id])
+  attendance Attendance[]
+  leaves     LeaveRequest[]
+  payrolls   Payroll[]
+  createdAt  DateTime     @default(now())
+}
+
+model Attendance {
+  id      String   @id @default(cuid())
+  date    DateTime
+  status  String   @default("present")
+  staffId String
+  staff   Staff    @relation(fields: [staffId], references: [id])
+}
+
+model LeaveRequest {
+  id      String   @id @default(cuid())
+  fromDate DateTime
+  toDate   DateTime
+  reason   String?
+  status   String  @default("pending")
+  staffId  String
+  staff    Staff   @relation(fields: [staffId], references: [id])
+}
+
+model Payroll {
+  id      String  @id @default(cuid())
+  period  String
+  amount  Int
+  status  String  @default("draft")
+  staffId String
+  staff   Staff   @relation(fields: [staffId], references: [id])
+}
+
+model Ticket {
+  id           String   @id @default(cuid())
+  subject      String
+  body         String?
+  status       String   @default("open")
+  priority     String   @default("normal")
+  requester    String?
+  branchId     String?
+  branch       Branch?  @relation(fields: [branchId], references: [id])
+  assigneeId   String?
+  assignee     User?    @relation("TicketAssignee", fields: [assigneeId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  channel   String
+  title     String
+  body      String?
+  status    String   @default("queued")
+  toAddress String?
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  action    String
+  module    String
+  detail    String?
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  body        String
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model PortfolioItem {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  description String
+  imageUrl    String?
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model FaqItem {
+  id       String  @id @default(cuid())
+  question String
+  answer   String
+  order    Int     @default(0)
+  active   Boolean @default(true)
+}

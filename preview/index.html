@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پیش‌نمایش ERP آرمونیا — انتخاب مفهوم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/estedad/wght.css" />
+  <link rel="stylesheet" href="../assets/design-tokens.css" />
+  <style>
+    :root {
+      --font-display: "Estedad Variable", "Vazirmatn", Tahoma, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-fa);
+      color: var(--text);
+      min-height: 100vh;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 100% 0%, rgb(196 165 116 / 0.14), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 0% 100%, rgb(47 74 60 / 0.06), transparent 50%),
+        linear-gradient(165deg, #F9F6F1, var(--color-ivory));
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: var(--space-10) var(--space-6);
+    }
+    .eyebrow {
+      color: var(--color-champagne-700);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin: 0 0 var(--space-2);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 3vw, 2.25rem);
+      font-weight: 650;
+      margin: 0 0 var(--space-3);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 40rem;
+      margin: 0 0 var(--space-8);
+    }
+    .rec-note {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      margin: 0 0 var(--space-10);
+      padding: var(--space-4) var(--space-5);
+      background: rgb(255 252 248 / 0.85);
+      border: 1px solid rgb(201 192 180 / 0.55);
+      border-inline-start: 3px solid var(--accent);
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--color-ink-700);
+    }
+    .rec-note strong { color: var(--primary); }
+
+    .grid {
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 800px) {
+      .grid { grid-template-columns: 1.08fr 0.92fr; }
+    }
+
+    .card {
+      background: rgb(255 252 248 / 0.9);
+      border: 1px solid rgb(201 192 180 / 0.55);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgb(28 25 22 / 0.04), 0 12px 36px rgb(47 74 60 / 0.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease);
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-stone-300);
+    }
+    .card.featured {
+      border-color: rgb(196 165 116 / 0.55);
+      box-shadow: 0 1px 2px rgb(28 25 22 / 0.04), 0 16px 48px rgb(47 74 60 / 0.08);
+    }
+
+    .thumb {
+      aspect-ratio: 16/10;
+      background: var(--color-olive-50);
+      border-bottom: 1px solid rgb(201 192 180 / 0.45);
+      position: relative;
+      overflow: hidden;
+    }
+    .thumb iframe {
+      width: 160%;
+      height: 160%;
+      border: 0;
+      transform: scale(0.625);
+      transform-origin: top right;
+      pointer-events: none;
+    }
+    .body {
+      padding: var(--space-6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .label-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+    .label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--color-olive-100);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+    }
+    .badge-rec {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--color-champagne-700);
+      background: var(--color-champagne-100);
+      padding: 0.25rem 0.55rem;
+      border-radius: var(--radius-sm);
+    }
+    .card h2 {
+      margin: 0 0 var(--space-2);
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 650;
+    }
+    .card p {
+      margin: 0 0 var(--space-5);
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-size: 0.95rem;
+      flex: 1;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-fg);
+      text-decoration: none;
+      padding: 0.7rem 1.15rem;
+      border-radius: var(--btn-radius);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background var(--duration) var(--ease);
+    }
+    .btn:hover { background: var(--primary-hover); }
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--border-strong);
+    }
+    .btn-ghost:hover { background: var(--color-olive-50); }
+    .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .note {
+      margin-top: var(--space-10);
+      padding: var(--space-5);
+      border-inline-start: 3px solid var(--accent);
+      background: var(--color-champagne-100);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">آرمونیا · ERP Preview</p>
+    <h1>Concept A تأیید شد — شِل زنده آماده است</h1>
+    <p class="lead">
+      Concept A (آرامِ ارتقایافته) به‌عنوان ظاهر رسمی پنل ERP آرمونیا تأیید شد.
+      صفحات زندهٔ داشبورد، CRM، نوبت‌دهی، پرونده بیمار و تنظیمات بر همین مفهوم ساخته شده‌اند.
+    </p>
+
+    <div class="rec-note">
+      <div>
+        <strong>وضعیت:</strong> Concept A تأیید و پیاده‌سازی شد.
+        برای کار با پنل از
+        <a class="list-link" href="../dashboard.html" style="font-weight:700;color:var(--primary)">داشبورد زنده</a>
+        شروع کنید. پیش‌نمایش‌های زیر فقط برای آرشیو مقایسه نگه داشته شده‌اند.
+      </div>
+    </div>
+
+    <div class="actions" style="margin-bottom:var(--space-10)">
+      <a class="btn" href="../dashboard.html">ورود به ERP زنده</a>
+      <a class="btn btn-ghost" href="../crm.html">CRM</a>
+      <a class="btn btn-ghost" href="../appointments.html">نوبت‌دهی</a>
+      <a class="btn btn-ghost" href="../patients.html">بیماران</a>
+      <a class="btn btn-ghost" href="../settings.html">تنظیمات</a>
+    </div>
+
+    <div class="grid">
+      <article class="card featured">
+        <div class="thumb">
+          <iframe src="concept-a.html" title="پیش‌نمایش Concept A ارتقایافته" tabindex="-1"></iframe>
+        </div>
+        <div class="body">
+          <div class="label-row">
+            <span class="label">Concept A — آرامِ ارتقایافته</span>
+            <span class="badge-rec">تأیید‌شده</span>
+          </div>
+          <h2>فضای باز، لوکس و آرام</h2>
+          <p>
+            سایدبار روشن، فاصله‌گذاری سخاوتمندانه، نوار شاخص‌های باز با اعداد Estedad،
+            بافت مش ملایم و حس کلینیک زیبایی پریمیوم — منبع حقیقت بصری پنل زنده.
+          </p>
+          <div class="actions">
+            <a class="btn" href="../dashboard.html">باز کردن ERP</a>
+            <a class="btn btn-ghost" href="concept-a.html">پیش‌نمایش آرشیو</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <iframe src="concept-b.html" title="پیش‌نمایش Concept B" tabindex="-1"></iframe>
+        </div>
+        <div class="body">
+          <div class="label-row">
+            <span class="label">Concept B — عملیاتی</span>
+          </div>
+          <h2>فشرده و عملیاتی</h2>
+          <p>
+            سایدبار زیتونی تیره، جدول متراکم‌تر و حس اتاق عملیات.
+            به‌عنوان جایگزین برای نقش‌هایی که روزانه با دادهٔ زیاد کار می‌کنند باقی مانده است.
+          </p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="concept-b.html">مشاهدهٔ تمام‌صفحه</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="note">
+      Concept B به‌عنوان آرشیو جایگزین باقی مانده است.
+      مسیر اصلی کار:
+      <strong><a href="../dashboard.html" style="color:inherit">erp/dashboard.html</a></strong>
+      · استایل مشترک در
+      <code dir="ltr">erp/assets/erp.css</code>.
+    </div>
+  </div>
+</body>
+</html>

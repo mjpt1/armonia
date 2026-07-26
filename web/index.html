@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>آرمونیا — زیبایی، هماهنگ با استاندارد</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>
+    .hero {
+      position: relative;
+      min-height: min(92vh, 820px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgb(28 25 22 / 0.72) 0%, rgb(28 25 22 / 0.25) 45%, rgb(47 74 60 / 0.15) 100%),
+        url("https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 4.5rem);
+      color: var(--color-porcelain);
+      max-width: 36rem;
+    }
+    .brand-hero {
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .brand-hero span {
+      display: block;
+      font-size: 0.35em;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      color: rgb(255 252 248 / 0.95);
+    }
+    .hero p {
+      color: rgb(255 252 248 / 0.78);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn-on-dark {
+      background: var(--accent);
+      color: var(--color-ink-900);
+    }
+    .btn-on-dark:hover { background: var(--color-champagne-700); color: #fff; }
+    .btn-outline-light {
+      border-color: rgb(255 252 248 / 0.45);
+      color: var(--color-porcelain);
+      background: transparent;
+    }
+    .btn-outline-light:hover { background: rgb(255 252 248 / 0.1); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 800px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    .service {
+      padding: 0;
+      border-block-start: 2px solid var(--primary);
+      padding-top: 1.25rem;
+    }
+    .service h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+    .service p { color: var(--text-muted); font-size: 0.95rem; }
+
+    .doctors {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 800px) {
+      .doctors { grid-template-columns: 1fr; }
+    }
+    .doctor {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .doctor-photo {
+      aspect-ratio: 4/5;
+      background: var(--color-olive-100) center/cover no-repeat;
+    }
+    .doctor-body { padding: 1.1rem 1.15rem 1.35rem; }
+    .doctor h3 { font-size: 1.05rem; color: var(--primary); }
+    .doctor .role { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin: 0.2rem 0 0.5rem; }
+    .doctor p { font-size: 0.88rem; color: var(--text-muted); }
+
+    .cta-band {
+      background: var(--primary);
+      color: var(--color-porcelain);
+      padding: 3rem 0;
+    }
+    .cta-band .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cta-band h2 { font-size: 1.5rem; margin-bottom: 0.35rem; }
+    .cta-band p { color: rgb(255 252 248 / 0.75); max-width: 28rem; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="logo" href="index.html">
+        <img src="../assets/logo/armonia-mark.svg" alt="" />
+        آرمونیا
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">خانه</a></li>
+        <li><a href="services.html">خدمات</a></li>
+        <li><a href="doctors.html">پزشکان</a></li>
+        <li><a href="booking.html">رزرو نوبت</a></li>
+        <li><a href="patient.html">پنل بیمار</a></li>
+        <li><a class="nav-cta" href="booking.html">مشاوره رایگان</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="brand-hero reveal">
+        <span>ARMONIA</span>
+        آرمونیا
+      </div>
+      <h1 class="reveal reveal-delay">زیبایی، هماهنگ با استاندارد.</h1>
+      <p class="reveal reveal-delay-2">شبکهٔ یکپارچهٔ کلینیک‌های زیبایی — از مشاوره تا پیگیری درمان، در یک تجربهٔ آرام و شفاف.</p>
+      <div class="hero-actions reveal reveal-delay-2">
+        <a class="btn btn-on-dark" href="booking.html">رزرو آنلاین</a>
+        <a class="btn btn-outline-light" href="services.html">مشاهدهٔ خدمات</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>خدمات منتخب</h2>
+        <p>درمان‌های تخصصی پوست، لیزر و زیبایی چهره با استاندارد یکسان در تمام شعب.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service">
+          <h3>پوست و جوان‌سازی</h3>
+          <p>بوتاکس، فیلر، مزوتراپی و مراقبت‌های تخصصی زیر نظر پزشک.</p>
+        </article>
+        <article class="service">
+          <h3>لیزر موهای زائد</h3>
+          <p>دستگاه‌های به‌روز، پروتکل ایمن، برنامهٔ جلسات شفاف.</p>
+        </article>
+        <article class="service">
+          <h3>مشاوره زیبایی</h3>
+          <p>ارزیابی اولیه و برنامهٔ درمان متناسب با هدف شما.</p>
+        </article>
+      </div>
+      <p style="margin-top:1.5rem"><a class="btn btn-ghost" href="services.html">همهٔ خدمات</a></p>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--surface); border-block:1px solid var(--border)">
+    <div class="container">
+      <div class="section-head">
+        <h2>پزشکان شبکه</h2>
+        <p>تیم متخصصان طرف‌قرارداد آرمونیا در شعب منتخب.</p>
+      </div>
+      <div class="doctors">
+        <article class="doctor">
+          <div class="doctor-photo" style="background-image:url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80')"></div>
+          <div class="doctor-body">
+            <h3>دکتر سارا نوری</h3>
+            <div class="role">پوست و مو</div>
+            <p>۱۵ سال تجربه · شعبه ونک</p>
+          </div>
+        </article>
+        <article class="doctor">
+          <div class="doctor-photo" style="background-image:url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80')"></div>
+          <div class="doctor-body">
+            <h3>دکتر امیر کاظمی</h3>
+            <div class="role">زیبایی و لیزر</div>
+            <p>۱۲ سال تجربه · سعادت‌آباد</p>
+          </div>
+        </article>
+        <article class="doctor">
+          <div class="doctor-photo" style="background-image:url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80')"></div>
+          <div class="doctor-body">
+            <h3>دکتر مریم امینی</h3>
+            <div class="role">جوان‌سازی صورت</div>
+            <p>۱۰ سال تجربه · اصفهان</p>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:1.5rem"><a class="btn btn-ghost" href="doctors.html">همهٔ پزشکان</a></p>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div>
+        <h2>نوبت خود را همین حالا رزرو کنید</h2>
+        <p>انتخاب شعبه، پزشک و خدمت در چند دقیقه — تأیید پیامکی پس از ثبت.</p>
+      </div>
+      <a class="btn btn-on-dark" href="booking.html">شروع رزرو</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>آرمونیا</h3>
+        <p>پلتفرم یکپارچه مدیریت شبکه کلینیک‌های زیبایی.</p>
+      </div>
+      <div>
+        <h3>دسترسی سریع</h3>
+        <ul>
+          <li><a href="services.html">خدمات</a></li>
+          <li><a href="doctors.html">پزشکان</a></li>
+          <li><a href="booking.html">رزرو</a></li>
+          <li><a href="patient.html">پنل بیمار</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>تماس</h3>
+        <p>تهران · ونک<br />۰۲۱-۹۱۰۰۰۰۰۰<br />info@armonia.example</p>
+      </div>
+    </div>
+    <div class="container copyright">© ۱۴۰۵ آرمونیا · همهٔ حقوق محفوظ است</div>
+  </footer>
+</body>
+</html>
